@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "name": "Damon Wu",
+    "handle": "DamengRandom",
+    "title": "JavaScript Engineer",
+    "location": "Sydney, Australia",
+    "tagline": "A passionate JavaScript Engineer from Sydney",
+    "employment": "Freelance"
+  },
+  "about": {
+    "bio": "Passionate developer specializing in React, Vue.js, Next.js, and AI technologies with a focus on modern web development.",
+    "currentWork": "Vue/React UI projects + AI stuffs",
+    "learning": ["Next.js", "GraphQL", "Prisma", "Kubernetes", "AI technologies"],
+    "collaboration": "Open-source frontend projects"
+  },
+  "skills": {
+    "proficiency": [
+      { "name": "React", "level": 80 },
+      { "name": "TypeScript", "level": 70 },
+      { "name": "Vue.js", "level": 70 },
+      { "name": "Next.js", "level": 50 },
+      { "name": "Kubernetes", "level": 60 },
+      { "name": "GraphQL", "level": 60 },
+      { "name": "AI/ML", "level": 40 }
+    ],
+    "technologies": [
+      "JavaScript", "Node.js", "Docker", "AWS", "Git",
+      "MongoDB", "PostgreSQL", "Redis", "Tailwind CSS"
+    ]
+  },
+  "knowledge": [
+    "System Design Notes",
+    "React Tricks 2025",
+    "Next.js Notes",
+    "TypeScript Recall",
+    "Coding Patterns",
+    "SOLID Principles",
+    "Kubernetes CKAD Notes",
+    "Jenkins Recall",
+    "Git Cherry Pick Notes"
+  ],
+  "contact": {
+    "github": "https://github.com/DamengRandom",
+    "linkedin": "https://www.linkedin.com/in/damon-wu-aab280107/",
+    "alternativeSite": "https://damengrandom.vercel.app"
+  }
+}
