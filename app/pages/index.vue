@@ -49,8 +49,8 @@ const contactComponent = computed(() => contactComponents[layout.value.contact -
       <component :is="knowledgeComponent" :data="data" />
       <component :is="contactComponent" :data="data" />
       <template #fallback>
-        <div class="min-h-screen flex items-center justify-center">
-          <span class="font-mono text-cyan-400 text-sm animate-pulse">&gt; loading_</span>
+        <div class="min-h-screen flex items-center justify-center bg-black">
+          <span class="text-[#6e6e73] text-sm tracking-tight">Loading...</span>
         </div>
       </template>
     </ClientOnly>

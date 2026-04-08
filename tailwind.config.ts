@@ -9,21 +9,36 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        mono: ['"JetBrains Mono"', '"Fira Code"', 'monospace'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"SF Pro Display"',
+          '"SF Pro Text"',
+          '"Segoe UI"',
+          'Roboto',
+          'Helvetica',
+          'Arial',
+          'sans-serif',
+        ],
+        mono: ['"SF Mono"', '"Fira Code"', '"Fira Mono"', '"Roboto Mono"', 'monospace'],
+      },
+      colors: {
+        apple: {
+          blue: '#0071e3',
+          'blue-hover': '#0077ed',
+          'blue-link-light': '#0066cc',
+          'blue-link-dark': '#2997ff',
+          black: '#000000',
+          'near-black': '#1d1d1f',
+          'light-gray': '#f5f5f7',
+          'mid-gray': '#6e6e73',
+          'dark-card': '#272729',
+          white: '#ffffff',
+        },
       },
       transitionDuration: {
         '250': '250ms',
         '400': '400ms',
-      },
-      animation: {
-        blink: 'blink 1s step-end infinite',
-      },
-      keyframes: {
-        blink: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0' },
-        },
       },
     },
   },

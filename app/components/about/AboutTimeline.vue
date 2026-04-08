@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
 import { Separator } from 'reka-ui'
 import { useDynamicCopy } from '~/composables/useDynamicCopy'
 import type { PortfolioData } from '~/types/portfolio'
@@ -14,42 +15,42 @@ const { copy } = useDynamicCopy({
 </script>
 
 <template>
-  <section class="py-24 px-6 bg-[#0d0f14]">
-    <div class="max-w-3xl mx-auto">
-      <h2 class="text-2xl font-semibold text-[#e8eaf0] mb-8">About</h2>
+  <section class="py-28 px-6 bg-[#f5f5f7]">
+    <div class="max-w-[740px] mx-auto">
+      <h2 class="text-4xl font-semibold text-[#1d1d1f] tracking-tighter leading-[1.1] mb-10">About</h2>
 
-      <div class="border-l-2 border-[#252a38] ml-3 pl-6 space-y-8">
+      <div class="border-l border-[#d2d2d7] ml-2 pl-8 space-y-10">
         <!-- Bio -->
         <div class="relative">
-          <span class="absolute -left-[33px] top-1.5 w-3 h-3 rounded-full bg-cyan-400 ring-4 ring-[#0d0f14]" />
-          <p class="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-1">Bio</p>
-          <p class="text-[#8892a4] text-sm leading-relaxed">{{ copy.bio }}</p>
+          <span class="absolute -left-[37px] top-1.5 w-3 h-3 rounded-full bg-sky-500 ring-4 ring-[#f5f5f7]" />
+          <p class="text-xs text-sky-500 font-medium uppercase tracking-widest mb-2 flex items-center gap-1.5"><Icon icon="lucide:user" class="w-3.5 h-3.5" /> Bio</p>
+          <p class="text-[#1d1d1f] text-sm leading-relaxed tracking-tight">{{ copy.bio }}</p>
         </div>
 
         <!-- Current Work -->
         <div class="relative">
-          <span class="absolute -left-[33px] top-1.5 w-3 h-3 rounded-full bg-cyan-400 ring-4 ring-[#0d0f14]" />
-          <p class="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-1">Currently Building</p>
-          <p class="text-[#8892a4] text-sm leading-relaxed">{{ copy.focus }}</p>
+          <span class="absolute -left-[37px] top-1.5 w-3 h-3 rounded-full bg-orange-500 ring-4 ring-[#f5f5f7]" />
+          <p class="text-xs text-orange-500 font-medium uppercase tracking-widest mb-2 flex items-center gap-1.5"><Icon icon="lucide:hammer" class="w-3.5 h-3.5" /> Currently Building</p>
+          <p class="text-[#1d1d1f] text-sm leading-relaxed tracking-tight">{{ copy.focus }}</p>
         </div>
 
         <!-- Learning -->
         <div class="relative">
-          <span class="absolute -left-[33px] top-1.5 w-3 h-3 rounded-full bg-cyan-400 ring-4 ring-[#0d0f14]" />
-          <p class="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-1">Learning</p>
-          <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span class="absolute -left-[37px] top-1.5 w-3 h-3 rounded-full bg-violet-500 ring-4 ring-[#f5f5f7]" />
+          <p class="text-xs text-violet-500 font-medium uppercase tracking-widest mb-2 flex items-center gap-1.5"><Icon icon="lucide:book-open" class="w-3.5 h-3.5" /> Learning</p>
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
             <template v-for="(item, idx) in about.learning" :key="item">
-              <span class="text-[#8892a4] text-sm">{{ item }}</span>
-              <span v-if="idx < about.learning.length - 1" class="text-[#4a5568] text-sm">·</span>
+              <span class="text-[#1d1d1f] text-sm tracking-tight">{{ item }}</span>
+              <span v-if="idx < about.learning.length - 1" class="text-[#d2d2d7] text-sm">·</span>
             </template>
           </div>
         </div>
 
         <!-- Collaboration -->
         <div class="relative">
-          <span class="absolute -left-[33px] top-1.5 w-3 h-3 rounded-full bg-cyan-400 ring-4 ring-[#0d0f14]" />
-          <p class="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-1">Open to Collaborate</p>
-          <p class="text-[#8892a4] text-sm leading-relaxed">{{ about.collaboration }}</p>
+          <span class="absolute -left-[37px] top-1.5 w-3 h-3 rounded-full bg-emerald-500 ring-4 ring-[#f5f5f7]" />
+          <p class="text-xs text-emerald-500 font-medium uppercase tracking-widest mb-2 flex items-center gap-1.5"><Icon icon="lucide:users" class="w-3.5 h-3.5" /> Open to Collaborate</p>
+          <p class="text-[#1d1d1f] text-sm leading-relaxed tracking-tight">{{ about.collaboration }}</p>
         </div>
       </div>
     </div>

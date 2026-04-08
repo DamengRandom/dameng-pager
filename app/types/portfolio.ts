@@ -10,6 +10,7 @@ export interface PortfolioMeta {
   location: string
   tagline: string
   employment: string
+  word: string
 }
 
 export interface PortfolioAbout {
@@ -30,11 +31,16 @@ export interface PortfolioContact {
   alternativeSite: string
 }
 
+export interface KnowledgeItem {
+  title: string
+  url: string
+}
+
 export interface PortfolioData {
   meta: PortfolioMeta
   about: PortfolioAbout
   skills: PortfolioSkills
-  knowledge: string[]
+  knowledge: KnowledgeItem[]
   contact: PortfolioContact
 }
 

@@ -5,7 +5,8 @@
     "title": "JavaScript Engineer",
     "location": "Sydney, Australia",
     "tagline": "A passionate JavaScript Engineer from Sydney",
-    "employment": "Freelance"
+    "employment": "Freelance",
+    "word": "Flowers may bloom again, but youth never returns"
   },
   "about": {
     "bio": "Passionate developer specializing in React, Vue.js, Next.js, and AI technologies with a focus on modern web development.",
@@ -18,26 +19,26 @@
       { "name": "React", "level": 80 },
       { "name": "TypeScript", "level": 70 },
       { "name": "Vue.js", "level": 70 },
-      { "name": "Next.js", "level": 50 },
+      { "name": "Nuxt.js", "level": 50 },
       { "name": "Kubernetes", "level": 60 },
-      { "name": "GraphQL", "level": 60 },
-      { "name": "AI/ML", "level": 40 }
+      { "name": "NodeJS", "level": 60 },
+      { "name": "LangchainJS", "level": 30 }
     ],
     "technologies": [
       "JavaScript", "Node.js", "Docker", "AWS", "Git",
-      "MongoDB", "PostgreSQL", "Redis", "Tailwind CSS"
+      "MongoDB", "PostgreSQL", "LangChainJS", "Tailwind CSS"
     ]
   },
   "knowledge": [
-    "System Design Notes",
-    "React Tricks 2025",
-    "Next.js Notes",
-    "TypeScript Recall",
-    "Coding Patterns",
-    "SOLID Principles",
-    "Kubernetes CKAD Notes",
-    "Jenkins Recall",
-    "Git Cherry Pick Notes"
+    { "title": "System Design Notes", "url": "https://github.com/DamengRandom/system-design-notes" },
+    { "title": "React Tricks 2025", "url": "https://github.com/DamengRandom/react-tricks-recalls-2025" },
+    { "title": "Next.js Notes", "url": "https://github.com/DamengRandom/nextjs-recalls/blob/master/general-notes.md" },
+    { "title": "TypeScript Recall", "url": "https://github.com/DamengRandom/ts-2025-recalls" },
+    { "title": "Coding Patterns", "url": "https://github.com/DamengRandom/code-patterns-recall-2025" },
+    { "title": "SOLID Principles", "url": "https://github.com/DamengRandom/solid-principle-recalls" },
+    { "title": "Kubernetes CKAD Notes", "url": "https://github.com/DamengRandom/ckad-try-2025" },
+    { "title": "Jenkins Recall", "url": "https://github.com/DamengRandom/damon-jenkins-recall-2024" },
+    { "title": "Git Cherry Pick Notes", "url": "https://github.com/DamengRandom/cherry-pick-recall" }
   ],
   "contact": {
     "github": "https://github.com/DamengRandom",

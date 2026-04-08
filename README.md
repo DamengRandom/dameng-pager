@@ -1,75 +1,40 @@
-# Nuxt Minimal Starter
+# Dameng Pager
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Personal portfolio website for **Damon Wu** ([@DamengRandom](https://github.com/DamengRandom)) — a JavaScript Engineer based in Sydney, Australia.
+
+Built with **Nuxt 4**, **Vue 3**, **Tailwind CSS**, and **Reka UI** primitives. Features an Apple-inspired design with a unique random layout system that presents a different combination of component variants on each visit.
+
+## Features
+
+- Apple design system aesthetic with alternating light/dark sections
+- Random layout engine — 3 visual variants per section (hero, about, skills, knowledge, contact), randomly composed on each page load
+- AI-powered dynamic copy via OpenAI (falls back to static data gracefully)
+- Fully responsive, accessible components built on Reka UI
+- Server API for portfolio data and AI-generated text
+
+## Tech Stack
+
+- [Nuxt 4](https://nuxt.com) + [Vue 3](https://vuejs.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Reka UI](https://reka-ui.com) (headless component primitives)
+- [OpenAI](https://openai.com) (optional dynamic copy generation)
 
 ## Setup
 
-Make sure to install dependencies:
-
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Open [http://localhost:8923](http://localhost:8923).
 
-Build the application for production:
+## Build
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## License
+
+MIT

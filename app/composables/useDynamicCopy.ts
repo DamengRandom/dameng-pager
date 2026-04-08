@@ -16,7 +16,7 @@ export function useDynamicCopy(fallback: { tagline: string; bio: string; focus: 
   const loading = ref(true)
 
   function pick<T>(arr: T[]): T {
-    return arr[Math.floor(Math.random() * arr.length)]
+    return arr[Math.floor(Math.random() * arr.length)] as T
   }
 
   onMounted(async () => {

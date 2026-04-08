@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
 import { Separator, CollapsibleRoot, CollapsibleTrigger, CollapsibleContent } from 'reka-ui'
 import { ref } from 'vue'
 import { useDynamicCopy } from '~/composables/useDynamicCopy'
@@ -19,29 +20,25 @@ const openCollab = ref(false)
 </script>
 
 <template>
-  <section class="py-24 px-6 bg-[#0d0f14]">
-    <div class="max-w-3xl mx-auto">
-      <p class="font-mono text-cyan-400 text-xs uppercase tracking-widest mb-1">// about</p>
-      <Separator class="border-[#252a38] mb-6" />
+  <section class="py-28 px-6 bg-[#f5f5f7]">
+    <div class="max-w-[740px] mx-auto">
+      <p class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-2">About</p>
+      <Separator class="border-[#d2d2d7] mb-8" />
 
-      <p class="text-[#8892a4] text-base leading-relaxed mb-6">{{ copy.bio }}</p>
+      <p class="text-[#1d1d1f] text-base leading-relaxed tracking-tight mb-8">{{ copy.bio }}</p>
 
       <!-- What I'm building now -->
       <CollapsibleRoot v-model:open="openWork">
         <CollapsibleTrigger
-          class="w-full flex items-center justify-between py-3 border-b border-[#252a38] cursor-pointer group"
+          class="w-full flex items-center justify-between py-4 border-b border-[#d2d2d7] cursor-pointer group"
         >
-          <span class="text-[#e8eaf0] text-sm font-mono group-hover:text-cyan-400 transition-colors">
+          <span class="flex items-center gap-2 text-[#1d1d1f] text-sm font-medium tracking-tight group-hover:text-orange-500 transition-colors duration-200">
+            <Icon icon="lucide:hammer" class="w-4 h-4 text-orange-500" />
             What I'm building now
           </span>
-          <span
-            class="text-[#4a5568] group-hover:text-cyan-400 transition-transform duration-200 font-mono text-xs"
-            :class="{ 'rotate-180': openWork }"
-          >
-            ▼
-          </span>
+          <Icon icon="lucide:chevron-up" class="w-4 h-4 text-[#6e6e73] transition-transform duration-200" :class="{ 'rotate-180': openWork }" />
         </CollapsibleTrigger>
-        <CollapsibleContent class="py-3 pl-4 text-[#8892a4] text-sm leading-relaxed">
+        <CollapsibleContent class="py-4 text-[#6e6e73] text-sm leading-relaxed tracking-tight">
           {{ copy.focus }}
         </CollapsibleContent>
       </CollapsibleRoot>
@@ -49,24 +46,20 @@ const openCollab = ref(false)
       <!-- Currently learning -->
       <CollapsibleRoot v-model:open="openLearning">
         <CollapsibleTrigger
-          class="w-full flex items-center justify-between py-3 border-b border-[#252a38] cursor-pointer group"
+          class="w-full flex items-center justify-between py-4 border-b border-[#d2d2d7] cursor-pointer group"
         >
-          <span class="text-[#e8eaf0] text-sm font-mono group-hover:text-cyan-400 transition-colors">
+          <span class="flex items-center gap-2 text-[#1d1d1f] text-sm font-medium tracking-tight group-hover:text-violet-500 transition-colors duration-200">
+            <Icon icon="lucide:book-open" class="w-4 h-4 text-violet-500" />
             Currently learning
           </span>
-          <span
-            class="text-[#4a5568] group-hover:text-cyan-400 transition-transform duration-200 font-mono text-xs"
-            :class="{ 'rotate-180': openLearning }"
-          >
-            ▼
-          </span>
+          <Icon icon="lucide:chevron-up" class="w-4 h-4 text-[#6e6e73] transition-transform duration-200" :class="{ 'rotate-180': openLearning }" />
         </CollapsibleTrigger>
-        <CollapsibleContent class="py-3 pl-4">
+        <CollapsibleContent class="py-4">
           <div class="flex flex-wrap gap-2">
             <span
               v-for="item in about.learning"
               :key="item"
-              class="bg-[#1c2030] border border-[#252a38] text-cyan-400 text-xs font-mono px-2 py-1 rounded"
+              class="bg-white text-[#1d1d1f] text-xs px-3 py-1.5 rounded-full shadow-[rgba(0,0,0,0.04)_0px_2px_8px_0px] tracking-tight"
             >
               {{ item }}
             </span>
@@ -77,19 +70,15 @@ const openCollab = ref(false)
       <!-- Open to collaborate -->
       <CollapsibleRoot v-model:open="openCollab">
         <CollapsibleTrigger
-          class="w-full flex items-center justify-between py-3 border-b border-[#252a38] cursor-pointer group"
+          class="w-full flex items-center justify-between py-4 border-b border-[#d2d2d7] cursor-pointer group"
         >
-          <span class="text-[#e8eaf0] text-sm font-mono group-hover:text-cyan-400 transition-colors">
+          <span class="flex items-center gap-2 text-[#1d1d1f] text-sm font-medium tracking-tight group-hover:text-emerald-500 transition-colors duration-200">
+            <Icon icon="lucide:users" class="w-4 h-4 text-emerald-500" />
             Open to collaborate on
           </span>
-          <span
-            class="text-[#4a5568] group-hover:text-cyan-400 transition-transform duration-200 font-mono text-xs"
-            :class="{ 'rotate-180': openCollab }"
-          >
-            ▼
-          </span>
+          <Icon icon="lucide:chevron-up" class="w-4 h-4 text-[#6e6e73] transition-transform duration-200" :class="{ 'rotate-180': openCollab }" />
         </CollapsibleTrigger>
-        <CollapsibleContent class="py-3 pl-4 text-[#8892a4] text-sm leading-relaxed">
+        <CollapsibleContent class="py-4 text-[#6e6e73] text-sm leading-relaxed tracking-tight">
           {{ about.collaboration }}
         </CollapsibleContent>
       </CollapsibleRoot>

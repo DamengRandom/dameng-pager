@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
 import { Separator, TooltipProvider, TooltipRoot, TooltipTrigger, TooltipContent } from 'reka-ui'
 import type { PortfolioData } from '~/types/portfolio'
 
@@ -7,33 +8,34 @@ const { knowledge } = props.data
 </script>
 
 <template>
-  <section class="py-24 px-6 bg-[#0d0f14]">
-    <div class="max-w-3xl mx-auto">
-      <p class="font-mono text-cyan-400 text-xs uppercase tracking-widest mb-2">// knowledge</p>
-      <h2 class="text-2xl font-semibold text-[#e8eaf0] mb-1">Knowledge Base</h2>
-      <Separator class="border-[#252a38] mb-8" />
+  <section class="py-28 px-6 bg-[#f5f5f7]">
+    <div class="max-w-[740px] mx-auto">
+      <p class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-2">Knowledge</p>
+      <h2 class="text-4xl font-semibold text-[#1d1d1f] tracking-tighter leading-[1.1] mb-2">Knowledge Base</h2>
+      <Separator class="border-[#d2d2d7] mb-10" />
 
       <TooltipProvider>
-        <ul class="space-y-1">
-          <li v-for="(item, idx) in knowledge" :key="item">
+        <ul>
+          <li v-for="(item, idx) in knowledge" :key="item.title">
             <TooltipRoot>
               <TooltipTrigger as-child>
-                <div
-                  class="flex items-center gap-6 py-3 border-b border-[#252a38] group hover:border-[#353d55] transition-colors cursor-default"
+                <a
+                  :href="item.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-6 py-4 border-b border-[#d2d2d7] group cursor-pointer hover:border-[#b0b0b8] transition-colors duration-200"
                 >
-                  <span class="text-xs font-mono text-[#4a5568] w-8 shrink-0">
+                  <span class="text-xs text-[#b0b0b8] w-7 shrink-0 tracking-tight">
                     {{ String(idx + 1).padStart(2, '0') }}
                   </span>
-                  <span class="text-[#8892a4] text-sm font-mono group-hover:text-[#e8eaf0] transition-colors duration-150 flex-1">
-                    {{ item }}
+                  <span class="text-[#1d1d1f] text-sm tracking-tight flex-1 group-hover:text-[#0066cc] transition-colors duration-200">
+                    {{ item.title }}
                   </span>
-                  <span class="opacity-0 group-hover:opacity-100 text-cyan-400 transition-opacity duration-150 text-xs font-mono">
-                    →
-                  </span>
-                </div>
+                  <Icon icon="lucide:arrow-up-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 text-[#0066cc] transition-opacity duration-200" />
+                </a>
               </TooltipTrigger>
-              <TooltipContent class="bg-[#1c2030] text-[#e8eaf0] border border-[#252a38] text-xs font-mono px-2 py-1 rounded">
-                personal study note
+              <TooltipContent class="bg-[#1d1d1f] text-white border-0 text-xs px-3 py-1.5 rounded-lg shadow-[rgba(0,0,0,0.22)_3px_5px_30px_0px]">
+                {{ item.url }}
               </TooltipContent>
             </TooltipRoot>
           </li>

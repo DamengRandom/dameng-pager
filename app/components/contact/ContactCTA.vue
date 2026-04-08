@@ -1,70 +1,76 @@
 <script setup lang="ts">
-import { Separator, TooltipProvider, TooltipRoot, TooltipTrigger, TooltipContent } from 'reka-ui'
 import type { PortfolioData } from '~/types/portfolio'
 
 const props = defineProps<{ data: PortfolioData }>()
-const { contact } = props.data
+const { meta, contact } = props.data
 </script>
 
 <template>
-  <section class="bg-[#13161d] border-t border-[#252a38] py-20 px-6">
-    <div class="max-w-2xl mx-auto text-center space-y-6">
-      <h2 class="text-3xl font-bold text-[#e8eaf0]">Let's build something.</h2>
-      <p class="text-[#8892a4] text-base">Find me on GitHub or LinkedIn.</p>
-
-      <TooltipProvider>
-        <div class="flex flex-wrap justify-center gap-4 mt-8">
-          <TooltipRoot>
-            <TooltipTrigger as-child>
-              <a
-                :href="contact.github"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="bg-cyan-400 hover:bg-cyan-300 text-[#0d0f14] font-semibold text-sm px-6 py-3 rounded-lg flex items-center gap-2 transition-colors duration-150"
-              >
-                GitHub →
-              </a>
-            </TooltipTrigger>
-            <TooltipContent class="bg-[#1c2030] text-[#e8eaf0] border border-[#252a38] text-xs font-mono px-2 py-1 rounded">
-              {{ contact.github }}
-            </TooltipContent>
-          </TooltipRoot>
-
-          <TooltipRoot>
-            <TooltipTrigger as-child>
-              <a
-                :href="contact.linkedin"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="border border-[#353d55] hover:border-cyan-400 text-[#8892a4] hover:text-cyan-400 text-sm px-6 py-3 rounded-lg flex items-center gap-2 transition-all duration-150"
-              >
-                LinkedIn →
-              </a>
-            </TooltipTrigger>
-            <TooltipContent class="bg-[#1c2030] text-[#e8eaf0] border border-[#252a38] text-xs font-mono px-2 py-1 rounded">
-              {{ contact.linkedin }}
-            </TooltipContent>
-          </TooltipRoot>
-        </div>
-
-        <div class="mt-4">
-          <TooltipRoot>
-            <TooltipTrigger as-child>
-              <a
-                :href="contact.alternativeSite"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-sm font-mono text-[#4a5568] hover:text-[#8892a4] transition-colors underline-offset-4 hover:underline"
-              >
-                {{ contact.alternativeSite }}
-              </a>
-            </TooltipTrigger>
-            <TooltipContent class="bg-[#1c2030] text-[#e8eaf0] border border-[#252a38] text-xs font-mono px-2 py-1 rounded">
-              Portfolio site
-            </TooltipContent>
-          </TooltipRoot>
-        </div>
-      </TooltipProvider>
+  <footer class="bg-[#111111] border-t border-[#222222]">
+    <!-- Large name banner -->
+    <div class="px-6 pt-16 pb-12">
+      <h2 class="text-[clamp(1rem,3vw,2.5rem)] font-bold text-white tracking-tighter leading-none text-right">
+        {{ meta.word }}
+      </h2>
     </div>
-  </section>
+
+    <!-- Grid section -->
+    <div class="px-6 pb-8 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-[#222222] pt-8">
+      <!-- Column 1: Location & contact -->
+      <div class="space-y-4">
+        <div>
+          <p class="text-xs text-[#6e6e73] uppercase tracking-widest mb-2">Location</p>
+          <p class="text-sm text-[#a1a1a6]">{{ meta.location }}</p>
+        </div>
+        <div>
+          <p class="text-xs text-[#6e6e73] uppercase tracking-widest mb-2">Status</p>
+          <p class="text-sm text-emerald-400">{{ meta.employment }}</p>
+        </div>
+      </div>
+
+      <!-- Column 2: CTA -->
+      <div class="space-y-4">
+        <p class="text-lg text-white font-medium tracking-tight">Let's build something together ~</p>
+        <p class="text-sm text-[#6e6e73] tracking-tight">Find me on GitHub or LinkedIn.</p>
+        <div class="flex gap-3 pt-1">
+          <a
+            :href="contact.github"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-white hover:text-[#2997ff] transition-colors duration-200 tracking-tight underline underline-offset-4 decoration-[#424245] hover:decoration-[#2997ff]"
+          >
+            GitHub
+          </a>
+          <a
+            :href="contact.linkedin"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm text-white hover:text-[#2997ff] transition-colors duration-200 tracking-tight underline underline-offset-4 decoration-[#424245] hover:decoration-[#2997ff]"
+          >
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 3: Links -->
+      <div class="space-y-4 md:text-right">
+        <p class="text-xs text-[#6e6e73] uppercase tracking-widest mb-2">Links</p>
+        <a
+          :href="contact.alternativeSite"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-[#6e6e73] hover:text-[#2997ff] transition-colors duration-200 block tracking-tight"
+        >
+          Previous Portfolio
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="px-6 py-4 border-t border-[#222222] flex flex-wrap items-center justify-between gap-2">
+      <p class="text-xs text-[#424245] tracking-tight">&copy; {{ new Date().getFullYear() }} {{ meta.name }}</p>
+      <p class="text-xs text-[#424245] tracking-tight">Built with Nuxt &amp; Vue</p>
+    </div>
+  </footer>
 </template>
+

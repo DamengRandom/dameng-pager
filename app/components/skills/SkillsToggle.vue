@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Separator, ProgressRoot, ProgressIndicator, ToggleGroupRoot, ToggleGroupItem } from 'reka-ui'
+import { Icon } from '@iconify/vue'
+import { ProgressRoot, ProgressIndicator, ToggleGroupRoot, ToggleGroupItem } from 'reka-ui'
 import { computed, ref } from 'vue'
 import type { PortfolioData } from '~/types/portfolio'
 
@@ -9,10 +10,37 @@ const { skills } = props.data
 const categories: Record<string, string[]> = {
   Frontend: ['React', 'TypeScript', 'Vue.js', 'Next.js'],
   Infra: ['Kubernetes', 'Docker', 'AWS'],
-  AI: ['AI/ML', 'GraphQL'],
+  AI: ['LangchainJS', 'Vector Database', 'AI Agent Design'],
 }
 
 const activeFilter = ref<string>('All')
+
+const skillColors: Record<string, string> = {
+  React: 'bg-sky-500',
+  TypeScript: 'bg-blue-600',
+  'Vue.js': 'bg-emerald-500',
+  'Next.js': 'bg-purple-500',
+  Kubernetes: 'bg-indigo-500',
+  Docker: 'bg-pink-500',
+  'LangchainJS': 'bg-amber-500',
+}
+
+const skillIcons: Record<string, string> = {
+  React: 'simple-icons:react',
+  TypeScript: 'simple-icons:typescript',
+  'Vue.js': 'simple-icons:vuedotjs',
+  'Next.js': 'simple-icons:nextdotjs',
+  Kubernetes: 'simple-icons:kubernetes',
+  Docker: 'simple-icons:docker',
+  'LangchainJS': 'lucide:brain',
+}
+
+const filterIcons: Record<string, string> = {
+  All: 'lucide:layers',
+  Frontend: 'lucide:monitor',
+  Infra: 'lucide:server',
+  AI: 'lucide:brain',
+}
 
 const filteredSkills = computed(() => {
   if (activeFilter.value === 'All') return skills.proficiency
@@ -22,23 +50,24 @@ const filteredSkills = computed(() => {
 </script>
 
 <template>
-  <section class="py-24 px-6 bg-[#0d0f14]">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-semibold text-[#e8eaf0] mb-6">Skills</h2>
+  <section class="py-28 px-6 bg-black">
+    <div class="max-w-[980px] mx-auto">
+      <h2 class="text-4xl font-semibold text-white tracking-tighter leading-[1.1] mb-8">Skills</h2>
 
       <!-- Filter -->
       <ToggleGroupRoot
         type="single"
         :model-value="activeFilter"
-        class="flex gap-2 mb-6 flex-wrap"
+        class="flex gap-2 mb-8 flex-wrap"
         @update:model-value="(v) => { if (v) activeFilter = String(v) }"
       >
         <ToggleGroupItem
           v-for="cat in ['All', 'Frontend', 'Infra', 'AI']"
           :key="cat"
           :value="cat"
-          class="px-3 py-1 rounded-full text-xs font-mono border border-[#252a38] text-[#8892a4] data-[state=on]:bg-[#00d4ff26] data-[state=on]:border-cyan-400 data-[state=on]:text-cyan-400 hover:border-[#353d55] transition-all duration-150"
+          class="px-4 py-1.5 rounded-full text-xs font-medium text-[#6e6e73] bg-[#1d1d1f] data-[state=on]:bg-[#0071e3] data-[state=on]:text-white hover:bg-[#272729] hover:text-white transition-all duration-200 tracking-tight"
         >
+          <Icon :icon="filterIcons[cat] || 'lucide:layers'" class="w-3.5 h-3.5" />
           {{ cat }}
         </ToggleGroupItem>
       </ToggleGroupRoot>
@@ -48,27 +77,30 @@ const filteredSkills = computed(() => {
         <div
           v-for="skill in filteredSkills"
           :key="skill.name"
-          class="bg-[#13161d] border border-[#252a38] rounded-xl p-4 hover:border-[#353d55] transition-colors"
+          class="bg-[#1d1d1f] rounded-2xl p-5 hover:bg-[#272729] transition-colors duration-200"
         >
-          <p class="text-sm font-mono text-[#e8eaf0] mb-3">{{ skill.name }}</p>
-          <ProgressRoot :model-value="skill.level" class="relative h-1 rounded-full bg-[#1c2030] overflow-hidden">
+          <p class="text-sm text-white mb-4 tracking-tight flex items-center gap-2">
+            <Icon :icon="skillIcons[skill.name] || 'lucide:code'" class="w-4 h-4" />
+            {{ skill.name }}
+          </p>
+          <ProgressRoot :model-value="skill.level" class="relative h-1 rounded-full bg-[#272729] overflow-hidden">
             <ProgressIndicator
-              class="h-full rounded-full bg-cyan-400 transition-all duration-700"
+              :class="['h-full rounded-full transition-all duration-700', skillColors[skill.name] || 'bg-[#0071e3]']"
               :style="{ width: `${skill.level}%` }"
             />
           </ProgressRoot>
-          <p class="text-xs font-mono text-[#4a5568] mt-1 text-right">{{ skill.level }}%</p>
+          <p class="text-xs text-[#424245] mt-2 text-right tracking-tight">{{ skill.level }}%</p>
         </div>
       </div>
 
       <!-- Tech Stack -->
-      <div class="mt-10">
-        <p class="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-4">Tech Stack</p>
+      <div class="mt-12">
+        <p class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-5">Tech Stack</p>
         <div class="flex flex-wrap gap-2">
           <span
             v-for="tech in skills.technologies"
             :key="tech"
-            class="bg-[#1c2030] border border-[#252a38] hover:border-cyan-400 hover:text-cyan-400 text-[#8892a4] text-xs font-mono px-3 py-1.5 rounded-full transition-all duration-150 cursor-default"
+            class="bg-[#1d1d1f] hover:bg-[#272729] text-[#a1a1a6] hover:text-white text-xs px-4 py-1.5 rounded-full transition-all duration-200 cursor-default tracking-tight"
           >
             {{ tech }}
           </span>

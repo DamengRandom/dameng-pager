@@ -11,7 +11,7 @@ const FALLBACK: GeneratedCopy = {
   bios: [
     portfolioData.about.bio,
     `I'm Damon, a freelance JavaScript engineer based in Sydney. I specialize in React and Vue ecosystems, and lately I've been deep in AI tooling and agent-driven UIs.`,
-    `Sydney-based engineer with a passion for frontend craft. I work across React, Vue, Next.js and Node — and I'm always learning something new on the AI/ML frontier.`,
+    `Sydney-based engineer with a passion for frontend craft. I work across React, Vue, Next.js and Node — and I'm always learning something new on the AI frontier.`,
   ],
   focuses: [
     portfolioData.about.currentWork,
@@ -35,10 +35,12 @@ function extractJson(raw: string): GeneratedCopy | null {
     // Find outermost { }
     const start = candidate.indexOf('{')
     const end = candidate.lastIndexOf('}')
+
     if (start === -1 || end === -1) continue
 
     try {
       const parsed = JSON.parse(candidate.slice(start, end + 1))
+
       if (
         Array.isArray(parsed.taglines) && parsed.taglines.length >= 1 &&
         Array.isArray(parsed.bios) && parsed.bios.length >= 1 &&
@@ -59,6 +61,7 @@ function extractJson(raw: string): GeneratedCopy | null {
       continue
     }
   }
+
   return null
 }
 
@@ -66,11 +69,13 @@ export default defineEventHandler(async () => {
   // Always return something — never throw to the client
   try {
     const cached = getCachedCopy()
+
     if (cached) {
       return { ...cached, cached: true }
     }
 
     const apiKey = process.env.NVIDIA_API_KEY
+
     if (!apiKey || apiKey === 'nvapi-your-key-here') {
       setCachedCopy(FALLBACK)
       return { ...FALLBACK, cached: false, fallback: true }
@@ -120,7 +125,9 @@ Reply with ONLY this JSON, no explanation:
 
   } catch (err: any) {
     console.error('[copy.get] Error:', err?.message ?? err)
+
     if (!getCachedCopy()) setCachedCopy(FALLBACK, 5 * 60 * 1000)
+
     return { ...FALLBACK, cached: false, fallback: true }
   }
 })

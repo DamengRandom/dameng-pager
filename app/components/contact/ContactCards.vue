@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
 import { Separator, TooltipProvider, TooltipRoot, TooltipTrigger, TooltipContent } from 'reka-ui'
 import type { PortfolioData } from '~/types/portfolio'
 
@@ -7,13 +8,13 @@ const { contact, meta } = props.data
 </script>
 
 <template>
-  <section class="py-24 px-6 bg-[#0d0f14]">
-    <div class="max-w-xl mx-auto">
-      <h2 class="text-2xl font-semibold text-[#e8eaf0] mb-1">Contact</h2>
-      <Separator class="border-[#252a38] mb-8" />
+  <section class="py-28 px-6 bg-black">
+    <div class="max-w-[580px] mx-auto">
+      <h2 class="text-4xl font-semibold text-white tracking-tighter leading-[1.1] mb-2">Contact</h2>
+      <Separator class="border-[#1d1d1f] mb-10" />
 
       <TooltipProvider>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <!-- GitHub -->
           <TooltipRoot>
             <TooltipTrigger as-child>
@@ -21,19 +22,19 @@ const { contact, meta } = props.data
                 :href="contact.github"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="bg-[#13161d] border border-[#252a38] rounded-xl p-6 flex items-center gap-4 hover:border-cyan-400/50 hover:bg-[#1c2030] transition-all duration-200 group cursor-pointer"
+                class="bg-[#1d1d1f] rounded-2xl p-6 flex items-center gap-4 hover:bg-[#272729] transition-all duration-200 group cursor-pointer"
               >
-                <div class="w-10 h-10 rounded-lg bg-[#1c2030] group-hover:bg-[#00d4ff26] flex items-center justify-center text-[#8892a4] group-hover:text-cyan-400 transition-all font-bold text-sm font-mono shrink-0">
-                  GH
+                <div class="w-10 h-10 rounded-xl bg-[#272729] group-hover:bg-[#24292e] flex items-center justify-center text-[#6e6e73] group-hover:text-white transition-all duration-200 shrink-0">
+                  <Icon icon="simple-icons:github" class="w-5 h-5" />
                 </div>
                 <div>
-                  <p class="text-[#e8eaf0] text-sm font-semibold">GitHub</p>
-                  <p class="text-[#8892a4] text-xs font-mono">{{ meta.handle }}</p>
+                  <p class="text-white text-sm font-medium tracking-tight">GitHub</p>
+                  <p class="text-[#6e6e73] text-xs tracking-tight">{{ meta.handle }}</p>
                 </div>
-                <span class="ml-auto text-[#4a5568] group-hover:text-cyan-400 group-hover:translate-x-1 transition-all text-sm">→</span>
+                <Icon icon="lucide:arrow-right" class="ml-auto w-4 h-4 text-[#424245] group-hover:text-white group-hover:translate-x-0.5 transition-all duration-200" />
               </a>
             </TooltipTrigger>
-            <TooltipContent class="bg-[#1c2030] text-[#e8eaf0] border border-[#252a38] text-xs font-mono px-2 py-1 rounded">
+            <TooltipContent class="bg-[#1d1d1f] text-white border-0 text-xs px-3 py-1.5 rounded-lg shadow-[rgba(0,0,0,0.22)_3px_5px_30px_0px]">
               {{ contact.github }}
             </TooltipContent>
           </TooltipRoot>
@@ -45,19 +46,19 @@ const { contact, meta } = props.data
                 :href="contact.linkedin"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="bg-[#13161d] border border-[#252a38] rounded-xl p-6 flex items-center gap-4 hover:border-cyan-400/50 hover:bg-[#1c2030] transition-all duration-200 group cursor-pointer"
+                class="bg-[#1d1d1f] rounded-2xl p-6 flex items-center gap-4 hover:bg-[#272729] transition-all duration-200 group cursor-pointer"
               >
-                <div class="w-10 h-10 rounded-lg bg-[#1c2030] group-hover:bg-[#00d4ff26] flex items-center justify-center text-[#8892a4] group-hover:text-cyan-400 transition-all font-bold text-sm font-mono shrink-0">
-                  in
+                <div class="w-10 h-10 rounded-xl bg-[#272729] group-hover:bg-[#0A66C2] flex items-center justify-center text-[#6e6e73] group-hover:text-white transition-all duration-200 shrink-0">
+                  <Icon icon="simple-icons:linkedin" class="w-5 h-5" />
                 </div>
                 <div>
-                  <p class="text-[#e8eaf0] text-sm font-semibold">LinkedIn</p>
-                  <p class="text-[#8892a4] text-xs font-mono">{{ meta.name }}</p>
+                  <p class="text-white text-sm font-medium tracking-tight">LinkedIn</p>
+                  <p class="text-[#6e6e73] text-xs tracking-tight">{{ meta.name }}</p>
                 </div>
-                <span class="ml-auto text-[#4a5568] group-hover:text-cyan-400 group-hover:translate-x-1 transition-all text-sm">→</span>
+                <Icon icon="lucide:arrow-right" class="ml-auto w-4 h-4 text-[#424245] group-hover:text-white group-hover:translate-x-0.5 transition-all duration-200" />
               </a>
             </TooltipTrigger>
-            <TooltipContent class="bg-[#1c2030] text-[#e8eaf0] border border-[#252a38] text-xs font-mono px-2 py-1 rounded">
+            <TooltipContent class="bg-[#1d1d1f] text-white border-0 text-xs px-3 py-1.5 rounded-lg shadow-[rgba(0,0,0,0.22)_3px_5px_30px_0px]">
               {{ contact.linkedin }}
             </TooltipContent>
           </TooltipRoot>
@@ -69,19 +70,19 @@ const { contact, meta } = props.data
                 :href="contact.alternativeSite"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="sm:col-span-2 bg-[#13161d] border border-[#252a38] rounded-xl p-6 flex items-center gap-4 hover:border-cyan-400/50 hover:bg-[#1c2030] transition-all duration-200 group cursor-pointer"
+                class="sm:col-span-2 bg-[#1d1d1f] rounded-2xl p-6 flex items-center gap-4 hover:bg-[#272729] transition-all duration-200 group cursor-pointer"
               >
-                <div class="w-10 h-10 rounded-lg bg-[#1c2030] group-hover:bg-[#00d4ff26] flex items-center justify-center text-[#8892a4] group-hover:text-cyan-400 transition-all font-bold text-sm font-mono shrink-0">
-                  ↗
+                <div class="w-10 h-10 rounded-xl bg-[#272729] group-hover:bg-emerald-500 flex items-center justify-center text-[#6e6e73] group-hover:text-white transition-all duration-200 shrink-0">
+                  <Icon icon="lucide:globe" class="w-5 h-5" />
                 </div>
                 <div>
-                  <p class="text-[#e8eaf0] text-sm font-semibold">Portfolio Site</p>
-                  <p class="text-[#8892a4] text-xs font-mono">{{ contact.alternativeSite }}</p>
+                  <p class="text-white text-sm font-medium tracking-tight">Portfolio Site</p>
+                  <p class="text-[#6e6e73] text-xs tracking-tight">{{ contact.alternativeSite }}</p>
                 </div>
-                <span class="ml-auto text-[#4a5568] group-hover:text-cyan-400 group-hover:translate-x-1 transition-all text-sm">→</span>
+                <Icon icon="lucide:arrow-right" class="ml-auto w-4 h-4 text-[#424245] group-hover:text-white group-hover:translate-x-0.5 transition-all duration-200" />
               </a>
             </TooltipTrigger>
-            <TooltipContent class="bg-[#1c2030] text-[#e8eaf0] border border-[#252a38] text-xs font-mono px-2 py-1 rounded">
+            <TooltipContent class="bg-[#1d1d1f] text-white border-0 text-xs px-3 py-1.5 rounded-lg shadow-[rgba(0,0,0,0.22)_3px_5px_30px_0px]">
               {{ contact.alternativeSite }}
             </TooltipContent>
           </TooltipRoot>

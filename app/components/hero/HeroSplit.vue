@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import HeroAsciiBackground from '~/components/hero/HeroAsciiBackground.vue'
+import { Icon } from '@iconify/vue'
 import { Separator, TooltipProvider, TooltipRoot, TooltipTrigger, TooltipContent } from 'reka-ui'
 import { useDynamicCopy } from '~/composables/useDynamicCopy'
 import type { PortfolioData } from '~/types/portfolio'
@@ -14,31 +16,39 @@ const { copy } = useDynamicCopy({
 </script>
 
 <template>
-  <section class="min-h-screen flex items-center bg-[#0d0f14] px-6 py-16">
-    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center w-full">
-      <!-- Left Column -->
-      <div class="border-l-2 border-cyan-400 pl-6 space-y-4">
-        <h1 class="text-5xl font-bold text-[#e8eaf0] leading-tight">
+  <section class="min-h-screen flex items-center bg-black px-6 py-20 relative overflow-hidden">
+    <!-- Background gradient orbs -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-[-10%] left-[30%] w-[600px] h-[600px] rounded-full bg-indigo-600/8 blur-[130px]" />
+      <div class="absolute bottom-[-15%] right-[10%] w-[500px] h-[500px] rounded-full bg-[#0071e3]/6 blur-[120px]" />
+      <div class="absolute top-[60%] left-[-5%] w-[300px] h-[300px] rounded-full bg-rose-500/5 blur-[100px]" />
+    </div>
+    <HeroAsciiBackground />
+    <div class="max-w-[980px] mx-auto grid md:grid-cols-2 gap-20 items-center w-full relative z-10">
+
+      <!-- Left -->
+      <div class="space-y-6">
+        <h1 class="text-5xl sm:text-6xl font-semibold text-white tracking-tighter leading-[1.07]">
           {{ meta.name }}
         </h1>
-        <p class="text-[#8892a4] text-lg font-mono">{{ meta.handle }}</p>
+        <p class="text-[#6e6e73] text-lg tracking-tight">{{ meta.title }}</p>
 
-        <Separator class="border-[#252a38] my-4" />
+        <Separator class="border-[#1d1d1f]" />
 
         <TooltipProvider>
-          <div class="flex gap-4 flex-wrap">
+          <div class="flex gap-6">
             <TooltipRoot>
               <TooltipTrigger as-child>
                 <a
                   :href="contact.github"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-[#8892a4] hover:text-cyan-400 font-mono text-sm transition-colors duration-150"
+                  class="text-[#2997ff] hover:text-white text-sm tracking-tight transition-colors duration-200"
                 >
-                  github ↗
+                  <Icon icon="simple-icons:github" class="w-4 h-4 inline" /> GitHub <Icon icon="lucide:arrow-up-right" class="w-3 h-3 inline" />
                 </a>
               </TooltipTrigger>
-              <TooltipContent class="bg-[#1c2030] text-[#e8eaf0] border border-[#252a38] text-xs font-mono px-2 py-1 rounded">
+              <TooltipContent class="bg-[#1d1d1f] text-white border-0 text-xs px-3 py-1.5 rounded-lg shadow-[rgba(0,0,0,0.22)_3px_5px_30px_0px]">
                 {{ contact.github }}
               </TooltipContent>
             </TooltipRoot>
@@ -49,12 +59,12 @@ const { copy } = useDynamicCopy({
                   :href="contact.linkedin"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-[#8892a4] hover:text-cyan-400 font-mono text-sm transition-colors duration-150"
+                  class="text-[#2997ff] hover:text-white text-sm tracking-tight transition-colors duration-200"
                 >
-                  linkedin ↗
+                  <Icon icon="simple-icons:linkedin" class="w-4 h-4 inline" /> LinkedIn <Icon icon="lucide:arrow-up-right" class="w-3 h-3 inline" />
                 </a>
               </TooltipTrigger>
-              <TooltipContent class="bg-[#1c2030] text-[#e8eaf0] border border-[#252a38] text-xs font-mono px-2 py-1 rounded">
+              <TooltipContent class="bg-[#1d1d1f] text-white border-0 text-xs px-3 py-1.5 rounded-lg shadow-[rgba(0,0,0,0.22)_3px_5px_30px_0px]">
                 {{ contact.linkedin }}
               </TooltipContent>
             </TooltipRoot>
@@ -62,24 +72,24 @@ const { copy } = useDynamicCopy({
         </TooltipProvider>
       </div>
 
-      <!-- Right Column -->
-      <div class="space-y-4">
-        <div class="inline-flex items-center gap-2 bg-[#00d4ff26] text-cyan-400 text-xs font-mono px-3 py-1 rounded-full">
-          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          {{ meta.title }}
+      <!-- Right -->
+      <div class="space-y-5">
+        <div class="inline-flex items-center gap-2 bg-gradient-to-r from-[#1d1d1f] to-[#2a2a2e] text-emerald-400 text-xs px-3 py-1.5 rounded-full tracking-wide">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          {{ meta.employment }}
         </div>
 
-        <div class="text-[#8892a4] text-sm flex items-center gap-2 font-mono">
-          <span>📍</span>
+        <div class="text-[#6e6e73] text-sm flex items-center gap-2">
           <span>{{ meta.location }}</span>
-          <span class="text-[#4a5568]">·</span>
-          <span>{{ meta.employment }}</span>
+          <span class="text-[#424245]">·</span>
+          <span>@{{ meta.handle }}</span>
         </div>
 
-        <p class="text-[#8892a4] text-base leading-relaxed">
+        <p class="text-[#a1a1a6] text-base leading-relaxed tracking-tight">
           {{ copy.tagline }}
         </p>
       </div>
+
     </div>
   </section>
 </template>
