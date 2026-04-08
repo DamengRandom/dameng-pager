@@ -17,14 +17,14 @@ const links = [
   <section class="bg-black py-20 px-6">
     <div class="max-w-[580px] mx-auto">
 
-      <div class="flex items-center gap-2 mb-8">
+      <div v-reveal="'fade-up'" class="flex items-center gap-2 mb-8">
         <span class="text-[#6e6e73] text-sm tracking-tight">Contact</span>
         <span class="text-[#424245]">·</span>
         <span class="text-[#424245] text-xs tracking-tight">3 links</span>
       </div>
 
       <TooltipProvider>
-        <div class="space-y-px">
+        <div v-reveal:1="'fade-up'" class="space-y-px">
           <div v-for="(link, idx) in links" :key="link.key">
             <TooltipRoot>
               <TooltipTrigger as-child>

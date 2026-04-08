@@ -7,7 +7,7 @@ const props = defineProps<{ data: PortfolioData }>()
 const { skills } = props.data
 
 function bubbleSize(level: number): number {
-  return 44 + level * 0.72
+  return 56 + level * 0.8
 }
 
 const bubbleColors: Record<string, string> = {
@@ -34,11 +34,11 @@ const skillIcons: Record<string, string> = {
 <template>
   <section class="py-28 px-6 bg-black">
     <div class="max-w-[980px] mx-auto">
-      <p class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-2">Skills</p>
+      <p v-reveal="'fade-up'" class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-2">Skills</p>
       <Separator class="border-[#1d1d1f] mb-10" />
 
       <TooltipProvider>
-        <div class="flex flex-wrap gap-4 items-end">
+        <div v-reveal:1="'scale'" class="flex flex-wrap gap-4 items-end">
           <TooltipRoot v-for="skill in skills.proficiency" :key="skill.name">
             <TooltipTrigger as-child>
               <div
@@ -62,7 +62,7 @@ const skillIcons: Record<string, string> = {
       </TooltipProvider>
 
       <!-- Technologies -->
-      <div class="mt-12">
+      <div v-reveal="'fade-up'" class="mt-12">
         <p class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-5">Technologies</p>
         <div class="flex flex-wrap gap-2">
           <span

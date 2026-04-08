@@ -10,11 +10,11 @@ const { contact, meta } = props.data
 <template>
   <section class="py-28 px-6 bg-black">
     <div class="max-w-[580px] mx-auto">
-      <h2 class="text-4xl font-semibold text-white tracking-tighter leading-[1.1] mb-2">Contact</h2>
+      <h2 v-reveal="'fade-up'" class="text-4xl font-semibold text-white tracking-tighter leading-[1.1] mb-2">Contact</h2>
       <Separator class="border-[#1d1d1f] mb-10" />
 
       <TooltipProvider>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div v-reveal:1="'scale'" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <!-- GitHub -->
           <TooltipRoot>
             <TooltipTrigger as-child>

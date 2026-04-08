@@ -37,10 +37,10 @@ const skillIcons: Record<string, string> = {
 <template>
   <section class="py-28 px-6 bg-black">
     <div class="max-w-[740px] mx-auto">
-      <h2 class="text-4xl font-semibold text-white tracking-tighter leading-[1.1] mb-2">Skills</h2>
+      <h2 v-reveal="'fade-up'" class="text-4xl font-semibold text-white tracking-tighter leading-[1.1] mb-2">Skills</h2>
       <Separator class="border-[#1d1d1f] mb-10" />
 
-      <div class="space-y-5">
+      <div v-reveal:1="'fade-up'" class="space-y-5">
         <div
           v-for="skill in skills.proficiency"
           :key="skill.name"
@@ -63,7 +63,7 @@ const skillIcons: Record<string, string> = {
       </div>
 
       <!-- Technologies -->
-      <div class="mt-12">
+      <div v-reveal="'fade-up'" class="mt-12">
         <p class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-5">Technologies</p>
         <div class="flex flex-wrap gap-2">
           <span

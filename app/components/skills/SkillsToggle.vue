@@ -52,7 +52,7 @@ const filteredSkills = computed(() => {
 <template>
   <section class="py-28 px-6 bg-black">
     <div class="max-w-[980px] mx-auto">
-      <h2 class="text-4xl font-semibold text-white tracking-tighter leading-[1.1] mb-8">Skills</h2>
+      <h2 v-reveal="'fade-up'" class="text-4xl font-semibold text-white tracking-tighter leading-[1.1] mb-8">Skills</h2>
 
       <!-- Filter -->
       <ToggleGroupRoot
@@ -73,7 +73,7 @@ const filteredSkills = computed(() => {
       </ToggleGroupRoot>
 
       <!-- Skill Cards -->
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div v-reveal:1="'fade-up'" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         <div
           v-for="skill in filteredSkills"
           :key="skill.name"
@@ -94,7 +94,7 @@ const filteredSkills = computed(() => {
       </div>
 
       <!-- Tech Stack -->
-      <div class="mt-12">
+      <div v-reveal="'fade-up'" class="mt-12">
         <p class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-5">Tech Stack</p>
         <div class="flex flex-wrap gap-2">
           <span

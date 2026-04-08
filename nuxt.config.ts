@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   modules: ['@nuxtjs/tailwindcss'],
 
-  css: [],
+  css: ['~/assets/css/animations.css'],
 
   tailwindcss: {
     exposeConfig: true,

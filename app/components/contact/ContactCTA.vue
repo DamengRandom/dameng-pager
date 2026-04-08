@@ -9,13 +9,13 @@ const { meta, contact } = props.data
   <footer class="bg-[#111111] border-t border-[#222222]">
     <!-- Large name banner -->
     <div class="px-6 pt-16 pb-12">
-      <h2 class="text-[clamp(1rem,3vw,2.5rem)] font-bold text-white tracking-tighter leading-none text-right">
+      <h2 v-reveal="'blur'" class="text-[clamp(1rem,3vw,2.5rem)] font-bold text-white tracking-tighter leading-none text-right">
         {{ meta.word }}
       </h2>
     </div>
 
     <!-- Grid section -->
-    <div class="px-6 pb-8 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-[#222222] pt-8">
+    <div v-reveal:1="'fade-up'" class="px-6 pb-8 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-[#222222] pt-8">
       <!-- Column 1: Location & contact -->
       <div class="space-y-4">
         <div>

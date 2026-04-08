@@ -22,10 +22,10 @@ const openCollab = ref(false)
 <template>
   <section class="py-28 px-6 bg-[#f5f5f7]">
     <div class="max-w-[740px] mx-auto">
-      <p class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-2">About</p>
+      <p v-reveal="'fade-up'" class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-2">About</p>
       <Separator class="border-[#d2d2d7] mb-8" />
 
-      <p class="text-[#1d1d1f] text-base leading-relaxed tracking-tight mb-8">{{ copy.bio }}</p>
+      <p v-reveal:1="'fade-up'" class="text-[#1d1d1f] text-base leading-relaxed tracking-tight mb-8">{{ copy.bio }}</p>
 
       <!-- What I'm building now -->
       <CollapsibleRoot v-model:open="openWork">

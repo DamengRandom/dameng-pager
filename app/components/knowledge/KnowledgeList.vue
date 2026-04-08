@@ -10,8 +10,8 @@ const { knowledge } = props.data
 <template>
   <section class="py-28 px-6 bg-[#f5f5f7]">
     <div class="max-w-[740px] mx-auto">
-      <p class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-2">Knowledge</p>
-      <h2 class="text-4xl font-semibold text-[#1d1d1f] tracking-tighter leading-[1.1] mb-2">Knowledge Base</h2>
+      <p v-reveal="'fade-up'" class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-2">Knowledge</p>
+      <h2 v-reveal:1="'fade-up'" class="text-4xl font-semibold text-[#1d1d1f] tracking-tighter leading-[1.1] mb-2">Knowledge Base</h2>
       <Separator class="border-[#d2d2d7] mb-10" />
 
       <TooltipProvider>

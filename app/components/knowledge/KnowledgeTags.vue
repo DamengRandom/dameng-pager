@@ -13,9 +13,9 @@ const hoverColors = ['hover:bg-sky-500', 'hover:bg-violet-500', 'hover:bg-emeral
 <template>
   <section class="py-28 px-6 bg-[#f5f5f7]">
     <div class="max-w-[980px] mx-auto">
-      <p class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-10">Knowledge</p>
+      <p v-reveal="'fade-up'" class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-10">Knowledge</p>
 
-      <div class="flex flex-wrap gap-2">
+      <div v-reveal:1="'scale'" class="flex flex-wrap gap-2">
         <HoverCardRoot v-for="(item, idx) in knowledge" :key="item.title">
           <HoverCardTrigger as-child>
             <a

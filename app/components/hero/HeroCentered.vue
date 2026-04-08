@@ -19,18 +19,18 @@ const { copy } = useDynamicCopy({
   <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-black relative overflow-hidden">
     <!-- Background gradient orbs -->
     <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#0071e3]/8 blur-[120px]" />
-      <div class="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-600/8 blur-[120px]" />
-      <div class="absolute top-[30%] right-[20%] w-[300px] h-[300px] rounded-full bg-emerald-500/5 blur-[100px]" />
+      <div class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#0071e3]/8 blur-[120px] animate-glow-pulse" />
+      <div class="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-purple-600/8 blur-[120px] animate-glow-pulse" style="animation-delay: 2s" />
+      <div class="absolute top-[30%] right-[20%] w-[300px] h-[300px] rounded-full bg-emerald-500/5 blur-[100px] animate-float-slow" />
     </div>
     <!-- ASCII art background -->
     <HeroAsciiBackground />
     <div class="max-w-[680px] mx-auto space-y-6 relative z-10">
 
-      <h1 class="text-6xl sm:text-7xl font-semibold text-white tracking-tighter leading-[1.07]">
+      <h1 v-reveal="'blur'" class="text-6xl sm:text-7xl font-semibold text-white tracking-tighter leading-[1.07]">
         {{ meta.name }}
       </h1>
-      <p class="text-xl text-[#6e6e73] tracking-tight">{{ meta.title }}</p>
+      <p v-reveal:1="'fade-up'" class="text-xl text-[#6e6e73] tracking-tight">{{ meta.title }}</p>
 
       <Separator class="w-20 mx-auto border-[#1d1d1f]" />
 
@@ -40,12 +40,12 @@ const { copy } = useDynamicCopy({
         <span>{{ meta.employment }}</span>
       </div>
 
-      <p class="text-base text-[#a1a1a6] leading-relaxed tracking-tight">
+      <p v-reveal:2="'fade-up'" class="text-base text-[#a1a1a6] leading-relaxed tracking-tight">
         {{ copy.tagline }}
       </p>
 
       <TooltipProvider>
-        <div class="flex items-center justify-center gap-3 pt-2">
+        <div v-reveal:3="'fade-up'" class="flex items-center justify-center gap-3 pt-2">
           <TooltipRoot>
             <TooltipTrigger as-child>
               <a

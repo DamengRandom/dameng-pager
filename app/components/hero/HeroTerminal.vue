@@ -19,21 +19,21 @@ const { copy } = useDynamicCopy({
   <section class="min-h-screen flex items-center bg-black px-6 relative overflow-hidden">
     <!-- Background gradient orbs -->
     <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-[-15%] right-[-5%] w-[700px] h-[700px] rounded-full bg-[#0071e3]/8 blur-[140px]" />
-      <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-violet-600/6 blur-[120px]" />
-      <div class="absolute top-[50%] left-[40%] w-[250px] h-[250px] rounded-full bg-teal-500/5 blur-[80px]" />
+      <div class="absolute top-[-15%] right-[-5%] w-[700px] h-[700px] rounded-full bg-[#0071e3]/8 blur-[140px] animate-glow-pulse" />
+      <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-violet-600/6 blur-[120px] animate-glow-pulse" style="animation-delay: 2s" />
+      <div class="absolute top-[50%] left-[40%] w-[250px] h-[250px] rounded-full bg-teal-500/5 blur-[80px] animate-float-slow" />
     </div>
     <HeroAsciiBackground />
     <div class="max-w-[980px] mx-auto w-full py-20 space-y-8 relative z-10">
 
       <!-- Label -->
-      <div class="inline-flex items-center gap-2 bg-gradient-to-r from-[#1d1d1f] to-[#2a2a2e] text-[#6e6e73] text-xs px-3 py-1 rounded-full tracking-wide">
+      <div v-reveal="'fade-up'" class="inline-flex items-center gap-2 bg-gradient-to-r from-[#1d1d1f] to-[#2a2a2e] text-[#6e6e73] text-xs px-3 py-1 rounded-full tracking-wide">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
         {{ meta.employment }}
       </div>
 
       <!-- Name -->
-      <div class="space-y-2">
+      <div v-reveal:1="'fade-up'" class="space-y-2">
         <h1 class="text-6xl sm:text-7xl font-semibold text-white tracking-tighter leading-[1.07]">
           {{ meta.name }}
         </h1>
@@ -41,12 +41,12 @@ const { copy } = useDynamicCopy({
       </div>
 
       <!-- Tagline -->
-      <p class="text-lg text-[#a1a1a6] max-w-xl leading-relaxed tracking-tight">
+      <p v-reveal:2="'fade-up'" class="text-lg text-[#a1a1a6] max-w-xl leading-relaxed tracking-tight">
         {{ copy.tagline }}
       </p>
 
       <!-- Meta -->
-      <div class="text-sm text-[#6e6e73] flex gap-2 items-center flex-wrap">
+      <div v-reveal:3="'fade-up'" class="text-sm text-[#6e6e73] flex gap-2 items-center flex-wrap">
         <span>{{ meta.location }}</span>
         <span class="text-[#424245]">·</span>
         <span>@{{ meta.handle }}</span>
@@ -56,7 +56,7 @@ const { copy } = useDynamicCopy({
 
       <!-- Links -->
       <TooltipProvider>
-        <div class="flex gap-4 flex-wrap">
+        <div v-reveal:4="'fade-up'" class="flex gap-4 flex-wrap">
           <TooltipRoot>
             <TooltipTrigger as-child>
               <a

@@ -19,15 +19,15 @@ const { copy } = useDynamicCopy({
   <section class="min-h-screen flex items-center bg-black px-6 py-20 relative overflow-hidden">
     <!-- Background gradient orbs -->
     <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-[-10%] left-[30%] w-[600px] h-[600px] rounded-full bg-indigo-600/8 blur-[130px]" />
-      <div class="absolute bottom-[-15%] right-[10%] w-[500px] h-[500px] rounded-full bg-[#0071e3]/6 blur-[120px]" />
-      <div class="absolute top-[60%] left-[-5%] w-[300px] h-[300px] rounded-full bg-rose-500/5 blur-[100px]" />
+      <div class="absolute top-[-10%] left-[30%] w-[600px] h-[600px] rounded-full bg-indigo-600/8 blur-[130px] animate-glow-pulse" />
+      <div class="absolute bottom-[-15%] right-[10%] w-[500px] h-[500px] rounded-full bg-[#0071e3]/6 blur-[120px] animate-glow-pulse" style="animation-delay: 2s" />
+      <div class="absolute top-[60%] left-[-5%] w-[300px] h-[300px] rounded-full bg-rose-500/5 blur-[100px] animate-float-slow" />
     </div>
     <HeroAsciiBackground />
     <div class="max-w-[980px] mx-auto grid md:grid-cols-2 gap-20 items-center w-full relative z-10">
 
       <!-- Left -->
-      <div class="space-y-6">
+      <div v-reveal="'fade-left'" class="space-y-6">
         <h1 class="text-5xl sm:text-6xl font-semibold text-white tracking-tighter leading-[1.07]">
           {{ meta.name }}
         </h1>
@@ -73,7 +73,7 @@ const { copy } = useDynamicCopy({
       </div>
 
       <!-- Right -->
-      <div class="space-y-5">
+      <div v-reveal:2="'fade-right'" class="space-y-5">
         <div class="inline-flex items-center gap-2 bg-gradient-to-r from-[#1d1d1f] to-[#2a2a2e] text-emerald-400 text-xs px-3 py-1.5 rounded-full tracking-wide">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           {{ meta.employment }}
