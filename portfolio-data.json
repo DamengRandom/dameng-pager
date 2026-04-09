@@ -40,6 +40,22 @@
     { "title": "Jenkins Recall", "url": "https://github.com/DamengRandom/damon-jenkins-recall-2024" },
     { "title": "Git Cherry Pick Notes", "url": "https://github.com/DamengRandom/cherry-pick-recall" }
   ],
+  "aiExplore": {
+    "projects": [
+      {
+        "name": "oh-my-workers",
+        "description": "AI-powered Cloudflare Workers — exploring edge computing with LLMs, vector databases, and AI gateway patterns.",
+        "url": "https://github.com/DamengRandom/oh-my-workers",
+        "tags": ["Cloudflare Workers", "AI Gateway", "Edge Computing", "LLM"],
+        "icon": "lucide:cloud-cog"
+      }
+    ],
+    "comingSoon": [
+      "AI-powered code review assistant",
+      "RAG-based knowledge base chatbot",
+      "Multi-agent workflow orchestrator"
+    ]
+  },
   "contact": {
     "github": "https://github.com/DamengRandom",
     "linkedin": "https://www.linkedin.com/in/damon-wu-aab280107/",

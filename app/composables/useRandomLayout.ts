@@ -11,6 +11,7 @@ export function useRandomLayout() {
     about: 1,
     skills: 1,
     knowledge: 1,
+    aiExplore: 1,
     contact: 1,
   })
 
@@ -22,6 +23,7 @@ export function useRandomLayout() {
       about: randomVariant(),
       skills: randomVariant(),
       knowledge: randomVariant(),
+      aiExplore: randomVariant(),
       contact: randomVariant(),
     }
     mounted.value = true

@@ -36,11 +36,25 @@ export interface KnowledgeItem {
   url: string
 }
 
+export interface AIProject {
+  name: string
+  description: string
+  url: string
+  tags: string[]
+  icon: string
+}
+
+export interface PortfolioAIExplore {
+  projects: AIProject[]
+  comingSoon: string[]
+}
+
 export interface PortfolioData {
   meta: PortfolioMeta
   about: PortfolioAbout
   skills: PortfolioSkills
   knowledge: KnowledgeItem[]
+  aiExplore: PortfolioAIExplore
   contact: PortfolioContact
 }
 
@@ -51,5 +65,6 @@ export interface RandomLayout {
   about: LayoutVariant
   skills: LayoutVariant
   knowledge: LayoutVariant
+  aiExplore: LayoutVariant
   contact: LayoutVariant
 }
