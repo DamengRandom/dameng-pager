@@ -22,7 +22,11 @@ export default defineNuxtConfig({
           name: 'google-site-verification',
           content: 'yzBz9Sy_8TrXLA3Tt4pOkaRTXMAI_U3d4HW031WmdNc',
         }
-      ]
+      ],
+      script: [
+        { src: 'https://www.googletagmanager.com/gtag/js?id=G-0Y39WDSXM0', async: true },
+        { innerHTML: "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-0Y39WDSXM0');" }
+      ],
     },
   },
 })
