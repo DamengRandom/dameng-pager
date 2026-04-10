@@ -14,4 +14,15 @@ export default defineNuxtConfig({
   build: {
     transpile: ['reka-ui'],
   },
+
+  app: {
+    head: {
+      meta: [
+        {
+          name: 'google-site-verification',
+          content: 'yzBz9Sy_8TrXLA3Tt4pOkaRTXMAI_U3d4HW031WmdNc',
+        }
+      ]
+    },
+  },
 })
