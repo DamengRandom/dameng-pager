@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import HeroAsciiBackground from '~/components/hero/HeroAsciiBackground.vue'
+import HeroTechCloud from '~/components/hero/HeroTechCloud.vue'
 import { Icon } from '@iconify/vue'
 import { Separator, TooltipProvider, TooltipRoot, TooltipTrigger, TooltipContent } from 'reka-ui'
 import { useDynamicCopy } from '~/composables/useDynamicCopy'
@@ -24,8 +25,8 @@ const { copy } = useDynamicCopy({
       <div class="absolute top-[50%] left-[40%] w-[250px] h-[250px] rounded-full bg-teal-500/5 blur-[80px] animate-float-slow" />
     </div>
     <HeroAsciiBackground />
-    <div class="max-w-[980px] mx-auto w-full py-20 space-y-8 relative z-10">
-
+    <div class="max-w-[980px] mx-auto w-full py-20 relative z-10 grid md:grid-cols-[1fr_340px] gap-12 items-center">
+     <div class="space-y-8">
       <!-- Label -->
       <div v-reveal="'fade-up'" class="inline-flex items-center gap-2 bg-gradient-to-r from-[#1d1d1f] to-[#2a2a2e] text-[#6e6e73] text-xs px-3 py-1 rounded-full tracking-wide">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -96,6 +97,12 @@ const { copy } = useDynamicCopy({
           </TooltipRoot>
         </div>
       </TooltipProvider>
+     </div>
+
+      <!-- Tech Icons Cloud -->
+      <div class="hidden md:block relative h-[340px]">
+        <HeroTechCloud />
+      </div>
     </div>
   </section>
 </template>

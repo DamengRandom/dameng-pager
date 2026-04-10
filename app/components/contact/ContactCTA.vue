@@ -6,7 +6,7 @@ const { meta, contact } = props.data
 </script>
 
 <template>
-  <footer class="bg-[#111111] border-t border-[#222222]">
+  <footer class="bg-black border-t border-[#333]">
     <!-- Large name banner -->
     <div class="px-6 pt-16 pb-12">
       <h2 v-reveal="'blur'" class="text-[clamp(1rem,3vw,2.5rem)] font-bold text-white tracking-tighter leading-none text-right">

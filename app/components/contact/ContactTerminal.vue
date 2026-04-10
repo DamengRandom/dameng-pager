@@ -14,7 +14,7 @@ const links = [
 </script>
 
 <template>
-  <section class="bg-black py-20 px-6">
+  <section class="bg-black py-20 px-6 border-t border-[#333]">
     <div class="max-w-[580px] mx-auto">
 
       <div v-reveal="'fade-up'" class="flex items-center gap-2 mb-8">

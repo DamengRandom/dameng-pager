@@ -8,7 +8,7 @@ const { aiExplore } = props.data
 </script>
 
 <template>
-  <section class="py-28 px-6 bg-[#0a0a0a] relative overflow-hidden">
+  <section class="py-28 px-6 bg-black relative overflow-hidden">
     <!-- Radial gradient backdrop -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-gradient-to-b from-violet-600/8 to-transparent rounded-full blur-3xl" />
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const asciiRef = ref<HTMLPreElement>()
 const codeSnippets = [
@@ -50,7 +50,7 @@ function generateGrid(charWidth: number, rows: number): string {
   return lines.join('\n')
 }
 
-onMounted(() => {
+function updateGrid() {
   if (!asciiRef.value) return
 
   const fontSize = 11
@@ -60,6 +60,22 @@ onMounted(() => {
   const cols = Math.ceil(window.innerWidth / charW) + 20
 
   asciiRef.value.textContent = generateGrid(cols, rows)
+}
+
+let resizeTimer: ReturnType<typeof setTimeout>
+function onResize() {
+  clearTimeout(resizeTimer)
+  resizeTimer = setTimeout(updateGrid, 150)
+}
+
+onMounted(() => {
+  updateGrid()
+  window.addEventListener('resize', onResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', onResize)
+  clearTimeout(resizeTimer)
 })
 </script>
 
