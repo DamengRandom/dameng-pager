@@ -83,7 +83,7 @@ onUnmounted(() => {
   <div class="absolute inset-0 overflow-hidden pointer-events-none select-none">
     <pre
       ref="asciiRef"
-      class="absolute inset-0 text-[11px] leading-tight font-mono text-emerald-400/20 whitespace-pre overflow-hidden"
+      class="absolute inset-0 text-[11px] leading-tight font-mono text-purple-500/15 whitespace-pre overflow-hidden"
       aria-hidden="true"
     />
     <!-- Fade edges so text doesn't clip hard -->

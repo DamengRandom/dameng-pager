@@ -1,8 +1,4 @@
 /* ── Scroll reveal base ─────────────────────────────── */
-.reveal {
-  /* will-change applied only during transition, removed after reveal */
-}
-
 .reveal--fade-up {
   opacity: 0;
   transform: translateY(28px);
@@ -125,17 +121,38 @@
   transform: translateY(-4px);
 }
 
-/* ── Gradient text utility ─────────────────────────── */
+/* ── Gradient text utility (purple theme) ──────────── */
 .text-gradient {
-  background: linear-gradient(135deg, #2997ff, #68b5fc);
+  background: linear-gradient(to right, #e9d5ff, #a855f7, #6366f1);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
+/* ── Button glow effect ─────────────────────────────── */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, transparent 60%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+.btn-glow:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
 /* ── Respect reduced motion ────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
   .reveal--fade-up,
   .reveal--fade-in,
   .reveal--fade-left,

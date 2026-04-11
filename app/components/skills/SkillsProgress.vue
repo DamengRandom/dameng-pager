@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { Separator, ProgressRoot, ProgressIndicator } from 'reka-ui'
+import { ProgressRoot, ProgressIndicator } from 'reka-ui'
 import type { PortfolioData } from '~/types/portfolio'
 
 const props = defineProps<{ data: PortfolioData }>()
@@ -14,13 +14,15 @@ function levelLabel(level: number): string {
 }
 
 const skillColors: Record<string, string> = {
-  React: 'bg-sky-500',
-  TypeScript: 'bg-blue-600',
-  'Vue.js': 'bg-emerald-500',
-  'Next.js': 'bg-purple-500',
-  Kubernetes: 'bg-indigo-500',
+  React: 'bg-purple-500',
+  TypeScript: 'bg-indigo-500',
+  'Vue.js': 'bg-fuchsia-500',
+  'Next.js': 'bg-violet-500',
+  Kubernetes: 'bg-purple-400',
   GraphQL: 'bg-pink-500',
   'LangchainJS': 'bg-amber-500',
+  'Nuxt.js': 'bg-indigo-400',
+  'NodeJS': 'bg-purple-300',
 }
 
 const skillIcons: Record<string, string> = {
@@ -31,14 +33,19 @@ const skillIcons: Record<string, string> = {
   Kubernetes: 'simple-icons:kubernetes',
   GraphQL: 'simple-icons:graphql',
   'LangchainJS': 'lucide:brain',
+  'Nuxt.js': 'simple-icons:nuxtdotjs',
+  'NodeJS': 'simple-icons:nodedotjs',
 }
 </script>
 
 <template>
-  <section class="py-28 px-6 bg-black">
+  <section class="py-28 px-6 bg-black/40 relative">
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-900 to-transparent opacity-50" />
     <div class="max-w-[740px] mx-auto">
-      <h2 v-reveal="'fade-up'" class="text-4xl font-semibold text-white tracking-tighter leading-[1.1] mb-2">Skills</h2>
-      <Separator class="border-[#1d1d1f] mb-10" />
+      <div class="mb-10">
+        <h2 v-reveal="'fade-up'" class="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-4">Technical Arsenal</h2>
+        <p class="text-gray-500">Tools and technologies I use to build the future.</p>
+      </div>
 
       <div v-reveal:1="'fade-up'" class="space-y-5">
         <div
@@ -46,30 +53,30 @@ const skillIcons: Record<string, string> = {
           :key="skill.name"
           class="grid grid-cols-[140px_1fr_44px] items-center gap-5"
         >
-          <span class="text-sm text-[#a1a1a6] tracking-tight flex items-center gap-2" :title="levelLabel(skill.level)">
+          <span class="text-sm text-gray-400 tracking-tight flex items-center gap-2" :title="levelLabel(skill.level)">
             <Icon :icon="skillIcons[skill.name] || 'lucide:code'" class="w-4 h-4" />
             {{ skill.name }}
           </span>
 
-          <ProgressRoot :model-value="skill.level" class="relative h-1 rounded-full bg-[#272729] overflow-hidden">
+          <ProgressRoot :model-value="skill.level" class="relative h-1 rounded-full bg-white/5 overflow-hidden">
             <ProgressIndicator
-              :class="['h-full rounded-full transition-all duration-700', skillColors[skill.name] || 'bg-[#0071e3]']"
+              :class="['h-full rounded-full transition-all duration-700', skillColors[skill.name] || 'bg-purple-500']"
               :style="{ width: `${skill.level}%` }"
             />
           </ProgressRoot>
 
-          <span class="text-xs text-[#424245] text-right tracking-tight">{{ skill.level }}%</span>
+          <span class="text-xs text-gray-600 text-right tracking-tight">{{ skill.level }}%</span>
         </div>
       </div>
 
       <!-- Technologies -->
       <div v-reveal="'fade-up'" class="mt-12">
-        <p class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-5">Technologies</p>
+        <p class="text-xs text-gray-500 uppercase tracking-widest font-medium mb-5">Technologies</p>
         <div class="flex flex-wrap gap-2">
           <span
             v-for="tech in skills.technologies"
             :key="tech"
-            class="bg-[#1d1d1f] hover:bg-[#272729] text-[#a1a1a6] hover:text-white text-xs px-4 py-1.5 rounded-full transition-all duration-200 cursor-default tracking-tight"
+            class="bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-purple-500/30 text-xs px-4 py-1.5 rounded-full transition-all duration-200 cursor-default tracking-tight"
           >
             {{ tech }}
           </span>

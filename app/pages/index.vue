@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useRandomLayout } from '~/composables/useRandomLayout'
 import type { PortfolioData } from '~/types/portfolio'
 
+import HeroParticleNetwork from '~/components/hero/HeroParticleNetwork.vue'
 import HeroTerminal from '~/components/hero/HeroTerminal.vue'
 import HeroSplit from '~/components/hero/HeroSplit.vue'
 import HeroCentered from '~/components/hero/HeroCentered.vue'
@@ -47,19 +48,24 @@ const contactComponent = computed(() => contactComponents[layout.value.contact -
 </script>
 
 <template>
-  <main v-if="data">
+  <div>
     <ClientOnly>
-      <component :is="heroComponent" :data="data" />
-      <component :is="aboutComponent" :data="data" />
-      <component :is="skillsComponent" :data="data" />
-      <component :is="knowledgeComponent" :data="data" />
-      <component :is="aiExploreComponent" :data="data" />
-      <component :is="contactComponent" :data="data" />
-      <template #fallback>
-        <div class="min-h-screen flex items-center justify-center bg-black">
-          <span class="text-[#6e6e73] text-sm tracking-tight">Loading...</span>
-        </div>
-      </template>
+      <HeroParticleNetwork />
     </ClientOnly>
-  </main>
+    <main v-if="data" class="relative z-10">
+      <ClientOnly>
+        <component :is="heroComponent" :data="data" />
+        <component :is="aboutComponent" :data="data" />
+        <component :is="skillsComponent" :data="data" />
+        <component :is="knowledgeComponent" :data="data" />
+        <component :is="aiExploreComponent" :data="data" />
+        <component :is="contactComponent" :data="data" />
+        <template #fallback>
+          <div class="min-h-screen flex items-center justify-center bg-black">
+            <span class="text-[#6e6e73] text-sm tracking-tight">Loading...</span>
+          </div>
+        </template>
+      </ClientOnly>
+    </main>
+  </div>
 </template>

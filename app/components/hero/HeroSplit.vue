@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import HeroAsciiBackground from '~/components/hero/HeroAsciiBackground.vue'
 import { Icon } from '@iconify/vue'
-import { Separator, TooltipProvider, TooltipRoot, TooltipTrigger, TooltipContent } from 'reka-ui'
+import { TooltipProvider, TooltipRoot, TooltipTrigger, TooltipContent } from 'reka-ui'
 import { useDynamicCopy } from '~/composables/useDynamicCopy'
 import type { PortfolioData } from '~/types/portfolio'
 
@@ -16,42 +16,43 @@ const { copy } = useDynamicCopy({
 </script>
 
 <template>
-  <section class="min-h-screen flex items-center bg-black px-6 py-20 relative overflow-hidden">
+  <section class="min-h-screen flex items-center bg-[#050505]/80 px-6 py-20 relative overflow-hidden">
     <!-- Background gradient orbs -->
     <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-[-10%] left-[30%] w-[600px] h-[600px] rounded-full bg-indigo-600/8 blur-[130px] animate-glow-pulse" />
-      <div class="absolute bottom-[-15%] right-[10%] w-[500px] h-[500px] rounded-full bg-[#0071e3]/6 blur-[120px] animate-glow-pulse" style="animation-delay: 2s" />
-      <div class="absolute top-[60%] left-[-5%] w-[300px] h-[300px] rounded-full bg-rose-500/5 blur-[100px] animate-float-slow" />
+      <div class="absolute top-[-10%] left-[30%] w-[600px] h-[600px] rounded-full bg-purple-900/15 blur-[130px] animate-glow-pulse" />
+      <div class="absolute bottom-[-15%] right-[10%] w-[500px] h-[500px] rounded-full bg-indigo-600/10 blur-[120px] animate-glow-pulse" style="animation-delay: 2s" />
     </div>
     <HeroAsciiBackground />
     <div class="max-w-[980px] mx-auto grid md:grid-cols-2 gap-20 items-center w-full relative z-10">
 
       <!-- Left -->
       <div v-reveal="'fade-left'" class="space-y-6">
-        <h1 class="text-5xl sm:text-6xl font-semibold text-white tracking-tighter leading-[1.07]">
+        <h1 class="text-5xl sm:text-6xl font-semibold text-white tracking-[-0.04em] leading-[1.07]">
           {{ meta.name }}
         </h1>
-        <p class="text-[#6e6e73] text-lg tracking-tight">{{ meta.title }}</p>
+        <p class="text-gray-400 text-lg tracking-tight">{{ meta.title }}</p>
 
-        <Separator class="border-[#1d1d1f]" />
+        <div class="w-full h-px bg-gradient-to-r from-purple-900/50 via-transparent to-transparent" />
 
         <TooltipProvider>
-          <div class="flex gap-6">
+          <div class="flex gap-4">
             <TooltipRoot>
               <TooltipTrigger as-child>
                 <a
                   :href="contact.github"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-[#2997ff] hover:text-white text-sm tracking-tight transition-colors duration-200"
+                  class="inline-flex items-center gap-1.5 text-purple-400 hover:text-white text-sm tracking-tight transition-colors duration-200"
                 >
-                  <Icon icon="simple-icons:github" class="w-4 h-4 inline" /> GitHub <Icon icon="lucide:arrow-up-right" class="w-3 h-3 inline" />
+                  <Icon icon="simple-icons:github" class="w-4 h-4" /> GitHub <Icon icon="lucide:arrow-up-right" class="w-3 h-3" />
                 </a>
               </TooltipTrigger>
-              <TooltipContent class="bg-[#1d1d1f] text-white border-0 text-xs px-3 py-1.5 rounded-lg shadow-[rgba(0,0,0,0.22)_3px_5px_30px_0px]">
+              <TooltipContent class="bg-gray-900 text-white border border-white/10 text-xs px-3 py-1.5 rounded-lg">
                 {{ contact.github }}
               </TooltipContent>
             </TooltipRoot>
+
+            <span class="text-gray-700 text-sm">·</span>
 
             <TooltipRoot>
               <TooltipTrigger as-child>
@@ -59,12 +60,12 @@ const { copy } = useDynamicCopy({
                   :href="contact.linkedin"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-[#2997ff] hover:text-white text-sm tracking-tight transition-colors duration-200"
+                  class="inline-flex items-center gap-1.5 text-purple-400 hover:text-white text-sm tracking-tight transition-colors duration-200"
                 >
-                  <Icon icon="simple-icons:linkedin" class="w-4 h-4 inline" /> LinkedIn <Icon icon="lucide:arrow-up-right" class="w-3 h-3 inline" />
+                  <Icon icon="simple-icons:linkedin" class="w-4 h-4" /> LinkedIn <Icon icon="lucide:arrow-up-right" class="w-3 h-3" />
                 </a>
               </TooltipTrigger>
-              <TooltipContent class="bg-[#1d1d1f] text-white border-0 text-xs px-3 py-1.5 rounded-lg shadow-[rgba(0,0,0,0.22)_3px_5px_30px_0px]">
+              <TooltipContent class="bg-gray-900 text-white border border-white/10 text-xs px-3 py-1.5 rounded-lg">
                 {{ contact.linkedin }}
               </TooltipContent>
             </TooltipRoot>
@@ -74,18 +75,21 @@ const { copy } = useDynamicCopy({
 
       <!-- Right -->
       <div v-reveal:2="'fade-right'" class="space-y-5">
-        <div class="inline-flex items-center gap-2 bg-gradient-to-r from-[#1d1d1f] to-[#2a2a2e] text-emerald-400 text-xs px-3 py-1.5 rounded-full tracking-wide">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-medium">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+          </span>
           {{ meta.employment }}
         </div>
 
-        <div class="text-[#6e6e73] text-sm flex items-center gap-2">
+        <div class="text-gray-500 text-sm flex items-center gap-2">
           <span>{{ meta.location }}</span>
-          <span class="text-[#424245]">·</span>
+          <span class="text-gray-700">·</span>
           <span>@{{ meta.handle }}</span>
         </div>
 
-        <p class="text-[#a1a1a6] text-base leading-relaxed tracking-tight">
+        <p class="text-gray-400 text-base leading-relaxed tracking-tight">
           {{ copy.tagline }}
         </p>
       </div>

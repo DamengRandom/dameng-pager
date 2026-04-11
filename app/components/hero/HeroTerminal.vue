@@ -17,43 +17,45 @@ const { copy } = useDynamicCopy({
 </script>
 
 <template>
-  <section class="min-h-screen flex items-center bg-black px-6 relative overflow-hidden">
+  <section class="min-h-screen flex items-center bg-[#050505]/80 px-6 relative overflow-hidden">
     <!-- Background gradient orbs -->
     <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-[-15%] right-[-5%] w-[700px] h-[700px] rounded-full bg-[#0071e3]/8 blur-[140px] animate-glow-pulse" />
-      <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-violet-600/6 blur-[120px] animate-glow-pulse" style="animation-delay: 2s" />
-      <div class="absolute top-[50%] left-[40%] w-[250px] h-[250px] rounded-full bg-teal-500/5 blur-[80px] animate-float-slow" />
+      <div class="absolute top-[-15%] right-[-5%] w-[700px] h-[700px] rounded-full bg-purple-900/15 blur-[140px] animate-glow-pulse" />
+      <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-indigo-600/10 blur-[120px] animate-glow-pulse" style="animation-delay: 2s" />
     </div>
     <HeroAsciiBackground />
     <div class="max-w-[980px] mx-auto w-full py-20 relative z-10 grid md:grid-cols-[1fr_340px] gap-12 items-center">
      <div class="space-y-8">
-      <!-- Label -->
-      <div v-reveal="'fade-up'" class="inline-flex items-center gap-2 bg-gradient-to-r from-[#1d1d1f] to-[#2a2a2e] text-[#6e6e73] text-xs px-3 py-1 rounded-full tracking-wide">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+      <!-- Status badge -->
+      <div v-reveal="'fade-up'" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-medium">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+        </span>
         {{ meta.employment }}
       </div>
 
       <!-- Name -->
       <div v-reveal:1="'fade-up'" class="space-y-2">
-        <h1 class="text-6xl sm:text-7xl font-semibold text-white tracking-tighter leading-[1.07]">
+        <h1 class="text-6xl sm:text-7xl font-semibold text-white tracking-[-0.04em] leading-[1.07]">
           {{ meta.name }}
         </h1>
-        <p class="text-2xl text-[#6e6e73] tracking-tight">{{ meta.title }}</p>
+        <p class="text-2xl text-gray-400 tracking-tight">{{ meta.title }}</p>
       </div>
 
       <!-- Tagline -->
-      <p v-reveal:2="'fade-up'" class="text-lg text-[#a1a1a6] max-w-xl leading-relaxed tracking-tight">
+      <p v-reveal:2="'fade-up'" class="text-lg text-gray-500 max-w-xl leading-relaxed tracking-tight">
         {{ copy.tagline }}
       </p>
 
       <!-- Meta -->
-      <div v-reveal:3="'fade-up'" class="text-sm text-[#6e6e73] flex gap-2 items-center flex-wrap">
+      <div v-reveal:3="'fade-up'" class="text-sm text-gray-500 flex gap-2 items-center flex-wrap">
         <span>{{ meta.location }}</span>
-        <span class="text-[#424245]">·</span>
+        <span class="text-gray-700">·</span>
         <span>@{{ meta.handle }}</span>
       </div>
 
-      <Separator class="border-[#1d1d1f]" />
+      <div class="w-full h-px bg-gradient-to-r from-transparent via-purple-900/50 to-transparent" />
 
       <!-- Links -->
       <TooltipProvider>
@@ -64,19 +66,17 @@ const { copy } = useDynamicCopy({
                 :href="contact.github"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 text-[#2997ff] hover:text-white text-sm tracking-tight transition-colors duration-200"
+                class="inline-flex items-center gap-2 bg-white text-black text-sm font-medium px-6 py-2.5 rounded-full transition-transform hover:scale-105"
               >
                 <Icon icon="simple-icons:github" class="w-4 h-4" />
                 GitHub
-                <Icon icon="lucide:arrow-up-right" class="w-3 h-3" />
+                <Icon icon="lucide:arrow-right" class="w-3 h-3" />
               </a>
             </TooltipTrigger>
-            <TooltipContent class="bg-[#1d1d1f] text-white border-0 text-xs px-3 py-1.5 rounded-lg shadow-[rgba(0,0,0,0.22)_3px_5px_30px_0px]">
+            <TooltipContent class="bg-gray-900 text-white border border-white/10 text-xs px-3 py-1.5 rounded-lg">
               {{ contact.github }}
             </TooltipContent>
           </TooltipRoot>
-
-          <span class="text-[#424245] text-sm">·</span>
 
           <TooltipRoot>
             <TooltipTrigger as-child>
@@ -84,14 +84,15 @@ const { copy } = useDynamicCopy({
                 :href="contact.linkedin"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 text-[#2997ff] hover:text-white text-sm tracking-tight transition-colors duration-200"
+                class="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-white text-sm font-medium px-6 py-2.5 rounded-full backdrop-blur-md transition-all hover:bg-white/10 hover:border-purple-500/30 btn-glow"
               >
-                <Icon icon="simple-icons:linkedin" class="w-4 h-4" />
-                LinkedIn
-                <Icon icon="lucide:arrow-up-right" class="w-3 h-3" />
+                <span class="relative z-10 inline-flex items-center gap-2">
+                  <Icon icon="simple-icons:linkedin" class="w-4 h-4" />
+                  LinkedIn
+                </span>
               </a>
             </TooltipTrigger>
-            <TooltipContent class="bg-[#1d1d1f] text-white border-0 text-xs px-3 py-1.5 rounded-lg shadow-[rgba(0,0,0,0.22)_3px_5px_30px_0px]">
+            <TooltipContent class="bg-gray-900 text-white border border-white/10 text-xs px-3 py-1.5 rounded-lg">
               {{ contact.linkedin }}
             </TooltipContent>
           </TooltipRoot>

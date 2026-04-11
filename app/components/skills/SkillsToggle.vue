@@ -16,11 +16,11 @@ const categories: Record<string, string[]> = {
 const activeFilter = ref<string>('All')
 
 const skillColors: Record<string, string> = {
-  React: 'bg-sky-500',
-  TypeScript: 'bg-blue-600',
-  'Vue.js': 'bg-emerald-500',
-  'Next.js': 'bg-purple-500',
-  Kubernetes: 'bg-indigo-500',
+  React: 'bg-purple-500',
+  TypeScript: 'bg-indigo-500',
+  'Vue.js': 'bg-fuchsia-500',
+  'Next.js': 'bg-violet-500',
+  Kubernetes: 'bg-purple-400',
   Docker: 'bg-pink-500',
   'LangchainJS': 'bg-amber-500',
 }
@@ -50,9 +50,9 @@ const filteredSkills = computed(() => {
 </script>
 
 <template>
-  <section class="py-28 px-6 bg-black">
+  <section class="py-28 px-6 bg-[#050505]/80">
     <div class="max-w-[980px] mx-auto">
-      <h2 v-reveal="'fade-up'" class="text-4xl font-semibold text-white tracking-tighter leading-[1.1] mb-8">Skills</h2>
+      <h2 v-reveal="'fade-up'" class="text-3xl md:text-4xl font-semibold text-white tracking-tight leading-[1.1] mb-8">Skills</h2>
 
       <!-- Filter -->
       <ToggleGroupRoot
@@ -65,7 +65,7 @@ const filteredSkills = computed(() => {
           v-for="cat in ['All', 'Frontend', 'Infra', 'AI']"
           :key="cat"
           :value="cat"
-          class="px-4 py-1.5 rounded-full text-xs font-medium text-[#6e6e73] bg-[#1d1d1f] data-[state=on]:bg-[#0071e3] data-[state=on]:text-white hover:bg-[#272729] hover:text-white transition-all duration-200 tracking-tight"
+          class="px-4 py-1.5 rounded-full text-xs font-medium text-gray-500 bg-white/5 border border-white/10 data-[state=on]:bg-purple-500 data-[state=on]:text-white data-[state=on]:border-purple-500 hover:text-white transition-all duration-200 tracking-tight"
         >
           <Icon :icon="filterIcons[cat] || 'lucide:layers'" class="w-3.5 h-3.5" />
           {{ cat }}
@@ -77,30 +77,30 @@ const filteredSkills = computed(() => {
         <div
           v-for="skill in filteredSkills"
           :key="skill.name"
-          class="bg-[#1d1d1f] rounded-2xl p-5 hover:bg-[#272729] transition-colors duration-200"
+          class="glass-card rounded-2xl p-5"
         >
           <p class="text-sm text-white mb-4 tracking-tight flex items-center gap-2">
             <Icon :icon="skillIcons[skill.name] || 'lucide:code'" class="w-4 h-4" />
             {{ skill.name }}
           </p>
-          <ProgressRoot :model-value="skill.level" class="relative h-1 rounded-full bg-[#272729] overflow-hidden">
+          <ProgressRoot :model-value="skill.level" class="relative h-1 rounded-full bg-white/5 overflow-hidden">
             <ProgressIndicator
-              :class="['h-full rounded-full transition-all duration-700', skillColors[skill.name] || 'bg-[#0071e3]']"
+              :class="['h-full rounded-full transition-all duration-700', skillColors[skill.name] || 'bg-purple-500']"
               :style="{ width: `${skill.level}%` }"
             />
           </ProgressRoot>
-          <p class="text-xs text-[#424245] mt-2 text-right tracking-tight">{{ skill.level }}%</p>
+          <p class="text-xs text-gray-600 mt-2 text-right tracking-tight">{{ skill.level }}%</p>
         </div>
       </div>
 
       <!-- Tech Stack -->
       <div v-reveal="'fade-up'" class="mt-12">
-        <p class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-5">Tech Stack</p>
+        <p class="text-xs text-gray-500 uppercase tracking-widest font-medium mb-5">Tech Stack</p>
         <div class="flex flex-wrap gap-2">
           <span
             v-for="tech in skills.technologies"
             :key="tech"
-            class="bg-[#1d1d1f] hover:bg-[#272729] text-[#a1a1a6] hover:text-white text-xs px-4 py-1.5 rounded-full transition-all duration-200 cursor-default tracking-tight"
+            class="bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-purple-500/30 text-xs px-4 py-1.5 rounded-full transition-all duration-200 cursor-default tracking-tight"
           >
             {{ tech }}
           </span>

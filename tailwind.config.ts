@@ -9,36 +9,25 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          '-apple-system',
-          'BlinkMacSystemFont',
-          '"SF Pro Display"',
-          '"SF Pro Text"',
-          '"Segoe UI"',
-          'Roboto',
-          'Helvetica',
-          'Arial',
-          'sans-serif',
-        ],
-        mono: ['"SF Mono"', '"Fira Code"', '"Fira Mono"', '"Roboto Mono"', 'monospace'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"Fira Code"', '"SF Mono"', '"Roboto Mono"', 'monospace'],
       },
       colors: {
-        apple: {
-          blue: '#0071e3',
-          'blue-hover': '#0077ed',
-          'blue-link-light': '#0066cc',
-          'blue-link-dark': '#2997ff',
-          black: '#000000',
-          'near-black': '#1d1d1f',
-          'light-gray': '#f5f5f7',
-          'mid-gray': '#6e6e73',
-          'dark-card': '#272729',
-          white: '#ffffff',
+        dark: '#050505',
+        surface: {
+          DEFAULT: 'rgba(10, 10, 10, 0.6)',
+          card: 'rgba(255, 255, 255, 0.03)',
         },
       },
-      transitionDuration: {
-        '250': '250ms',
-        '400': '400ms',
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
       },
     },
   },

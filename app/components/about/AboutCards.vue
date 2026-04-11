@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { Separator } from 'reka-ui'
 import { useDynamicCopy } from '~/composables/useDynamicCopy'
 import type { PortfolioData } from '~/types/portfolio'
 
@@ -15,49 +14,50 @@ const { copy } = useDynamicCopy({
 </script>
 
 <template>
-  <section class="py-28 px-6 bg-black">
+  <section class="py-28 px-6 bg-[#050505]/80">
     <div class="max-w-[980px] mx-auto">
-      <p v-reveal="'fade-up'" class="text-xs text-[#6e6e73] uppercase tracking-widest font-medium mb-2">About</p>
-      <h2 v-reveal:1="'fade-up'" class="text-4xl font-semibold text-white tracking-tighter leading-[1.1] mb-3">About Me</h2>
-      <Separator class="border-[#333] mb-10" />
+      <h2 v-reveal="'fade-up'" class="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-6">
+        About <span class="text-purple-400">Me</span>
+      </h2>
+      <div class="w-full h-px bg-gradient-to-r from-purple-900/50 via-transparent to-transparent mb-10" />
 
       <!-- Bio -->
-      <div v-reveal:2="'fade-up'" class="bg-[#111] rounded-2xl p-8 text-[#e0e0e0] leading-relaxed text-base tracking-tight mb-6 border border-[#222]">
+      <div v-reveal:1="'fade-up'" class="glass-card rounded-2xl p-8 text-gray-400 leading-relaxed text-base tracking-tight mb-6">
         {{ copy.bio }}
       </div>
 
       <!-- Stat Cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div v-reveal:3="'scale'" class="bg-[#111] rounded-2xl p-6 border border-[#222] hover:border-[#444] transition-all duration-250 hover-lift">
+        <div v-reveal:2="'scale'" class="glass-card rounded-2xl p-6 hover-lift">
           <div class="flex items-center gap-2 mb-3">
-            <Icon icon="lucide:hammer" class="w-4 h-4 text-orange-500" />
-            <p class="text-xs text-orange-500 font-medium uppercase tracking-widest">Currently Building</p>
+            <Icon icon="lucide:hammer" class="w-4 h-4 text-purple-400" />
+            <p class="text-xs text-purple-400 font-medium uppercase tracking-widest">Currently Building</p>
           </div>
-          <p class="text-[#ccc] text-sm leading-relaxed tracking-tight">{{ copy.focus }}</p>
+          <p class="text-gray-400 text-sm leading-relaxed tracking-tight">{{ copy.focus }}</p>
         </div>
 
-        <div v-reveal:4="'scale'" class="bg-[#111] rounded-2xl p-6 border border-[#222] hover:border-[#444] transition-all duration-250 hover-lift">
+        <div v-reveal:3="'scale'" class="glass-card rounded-2xl p-6 hover-lift">
           <div class="flex items-center gap-2 mb-3">
-            <Icon icon="lucide:book-open" class="w-4 h-4 text-violet-500" />
-            <p class="text-xs text-violet-500 font-medium uppercase tracking-widest">Learning</p>
+            <Icon icon="lucide:book-open" class="w-4 h-4 text-indigo-400" />
+            <p class="text-xs text-indigo-400 font-medium uppercase tracking-widest">Learning</p>
           </div>
           <div class="flex flex-wrap gap-2">
             <span
               v-for="item in about.learning"
               :key="item"
-              class="bg-[#222] text-[#ccc] text-xs px-3 py-1 rounded-full tracking-tight"
+              class="bg-white/5 border border-white/10 text-gray-300 text-xs px-3 py-1 rounded-full tracking-tight"
             >
               {{ item }}
             </span>
           </div>
         </div>
 
-        <div v-reveal:5="'scale'" class="bg-[#111] rounded-2xl p-6 border border-[#222] hover:border-[#444] transition-all duration-250 hover-lift">
+        <div v-reveal:4="'scale'" class="glass-card rounded-2xl p-6 hover-lift">
           <div class="flex items-center gap-2 mb-3">
-            <Icon icon="lucide:users" class="w-4 h-4 text-emerald-500" />
-            <p class="text-xs text-emerald-500 font-medium uppercase tracking-widest">Open to Collaborate</p>
+            <Icon icon="lucide:users" class="w-4 h-4 text-fuchsia-400" />
+            <p class="text-xs text-fuchsia-400 font-medium uppercase tracking-widest">Open to Collaborate</p>
           </div>
-          <p class="text-[#ccc] text-sm leading-relaxed tracking-tight">{{ about.collaboration }}</p>
+          <p class="text-gray-400 text-sm leading-relaxed tracking-tight">{{ about.collaboration }}</p>
         </div>
       </div>
     </div>
