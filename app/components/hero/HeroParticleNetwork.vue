@@ -7,8 +7,9 @@ let particles: Particle[] = []
 let width = 0
 let height = 0
 
-const PARTICLE_COUNT = 60
-const CONNECTION_DISTANCE = 150
+const PARTICLE_COUNT = 100
+const CONNECTION_DISTANCE = 280
+const TRIANGLE_DISTANCE = 220
 
 class Particle {
   x: number
@@ -16,17 +17,17 @@ class Particle {
   vx: number
   vy: number
   size: number
-  color: string
+  glowSize: number
+  brightness: number
 
   constructor(w: number, h: number) {
     this.x = Math.random() * w
     this.y = Math.random() * h
-    this.vx = (Math.random() - 0.5) * 0.3
-    this.vy = (Math.random() - 0.5) * 0.3
-    this.size = Math.random() * 2
-    const r = 147 + Math.floor(Math.random() * 50)
-    const a = Math.random() * 0.5 + 0.1
-    this.color = `rgba(${r}, 51, 234, ${a})`
+    this.vx = (Math.random() - 0.5) * 0.4
+    this.vy = (Math.random() - 0.5) * 0.4
+    this.size = Math.random() * 3 + 1.5
+    this.glowSize = this.size * 5
+    this.brightness = Math.random() * 0.4 + 0.6
   }
 
   update() {
@@ -37,11 +38,28 @@ class Particle {
   }
 
   draw(ctx: CanvasRenderingContext2D) {
+    // Outer glow
+    const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.glowSize)
+    gradient.addColorStop(0, `rgba(139, 92, 246, ${this.brightness * 0.7})`)
+    gradient.addColorStop(0.5, `rgba(139, 92, 246, ${this.brightness * 0.2})`)
+    gradient.addColorStop(1, 'rgba(139, 92, 246, 0)')
+    ctx.beginPath()
+    ctx.arc(this.x, this.y, this.glowSize, 0, Math.PI * 2)
+    ctx.fillStyle = gradient
+    ctx.fill()
+
+    // Core dot
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-    ctx.fillStyle = this.color
+    ctx.fillStyle = `rgba(180, 130, 255, ${this.brightness})`
     ctx.fill()
   }
+}
+
+function dist(a: Particle, b: Particle) {
+  const dx = a.x - b.x
+  const dy = a.y - b.y
+  return Math.sqrt(dx * dx + dy * dy)
 }
 
 function initParticles() {
@@ -59,26 +77,49 @@ function animate() {
 
   ctx.clearRect(0, 0, width, height)
 
+  // Draw triangles (filled polygons) for nearby triplets
   for (let i = 0; i < particles.length; i++) {
-    const p = particles[i]
-    p.update()
-    p.draw(ctx)
-
     for (let j = i + 1; j < particles.length; j++) {
-      const p2 = particles[j]
-      const dx = p.x - p2.x
-      const dy = p.y - p2.y
-      const dist = Math.sqrt(dx * dx + dy * dy)
+      const dij = dist(particles[i], particles[j])
+      if (dij > TRIANGLE_DISTANCE) continue
+      for (let k = j + 1; k < particles.length; k++) {
+        const dik = dist(particles[i], particles[k])
+        const djk = dist(particles[j], particles[k])
+        if (dik < TRIANGLE_DISTANCE && djk < TRIANGLE_DISTANCE) {
+          const avgDist = (dij + dik + djk) / 3
+          const alpha = (1 - avgDist / TRIANGLE_DISTANCE) * 0.08
+          ctx.beginPath()
+          ctx.moveTo(particles[i].x, particles[i].y)
+          ctx.lineTo(particles[j].x, particles[j].y)
+          ctx.lineTo(particles[k].x, particles[k].y)
+          ctx.closePath()
+          ctx.fillStyle = `rgba(100, 60, 200, ${alpha})`
+          ctx.fill()
+        }
+      }
+    }
+  }
 
-      if (dist < CONNECTION_DISTANCE) {
+  // Draw connections
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const d = dist(particles[i], particles[j])
+      if (d < CONNECTION_DISTANCE) {
+        const alpha = (1 - d / CONNECTION_DISTANCE) * 0.55
         ctx.beginPath()
-        ctx.strokeStyle = `rgba(139, 92, 246, ${(1 - dist / CONNECTION_DISTANCE) * 0.15})`
-        ctx.lineWidth = 0.5
-        ctx.moveTo(p.x, p.y)
-        ctx.lineTo(p2.x, p2.y)
+        ctx.strokeStyle = `rgba(120, 80, 230, ${alpha})`
+        ctx.lineWidth = (1 - d / CONNECTION_DISTANCE) * 1.8 + 0.4
+        ctx.moveTo(particles[i].x, particles[i].y)
+        ctx.lineTo(particles[j].x, particles[j].y)
         ctx.stroke()
       }
     }
+  }
+
+  // Draw particles on top
+  for (const p of particles) {
+    p.update()
+    p.draw(ctx)
   }
 
   animationId = requestAnimationFrame(animate)
@@ -107,7 +148,7 @@ onUnmounted(() => {
 <template>
   <canvas
     ref="canvasRef"
-    class="fixed top-0 left-0 w-full h-full pointer-events-none opacity-60"
+    class="fixed top-0 left-0 w-full h-full pointer-events-none"
     style="z-index: 1"
     aria-hidden="true"
   />
